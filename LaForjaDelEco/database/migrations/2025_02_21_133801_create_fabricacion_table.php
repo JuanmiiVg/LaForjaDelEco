@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up() {
         Schema::create('fabricacion', function (Blueprint $table) {
-            $table->foreignId('Arma_idArmas')->constrained('armas')->onDelete('cascade');
-            $table->foreignId('Materiales_idMateriales')->constrained('materiales')->onDelete('cascade');
-            $table->primary(['Arma_idArmas', 'Materiales_idMateriales']);
+            $table->foreignId('arma_id')->constrained('arma')->onDelete('cascade');
+            $table->foreignId('material_id')->constrained('material')->onDelete('cascade');
+            $table->primary(['arma_id', 'material_id']);
             $table->timestamps();
         });
     }

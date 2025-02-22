@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up() {
         Schema::create('caracteristicas', function (Blueprint $table) {
-            $table->id('idCaracteristicas');
+            $table->id();
             $table->integer('vigor')->nullable();
             $table->integer('aguante')->nullable();
             $table->integer('fuerza')->nullable();

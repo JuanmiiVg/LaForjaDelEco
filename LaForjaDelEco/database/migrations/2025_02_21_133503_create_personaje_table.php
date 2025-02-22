@@ -6,16 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up() {
-        Schema::create('personajes', function (Blueprint $table) {
-            $table->id('idPersonaje');
+        Schema::create('personaje', function (Blueprint $table) {
+            $table->id();
             $table->string('nombrePersonaje', 45)->nullable();
             $table->string('email', 45)->unique();
             $table->string('password', 45);
-            $table->string('imagen', 45)->nullable();
+            $table->string('imagen', 250)->nullable();
             $table->string('rubies', 45)->nullable();
-            $table->foreignId('idCaracteristicas')->constrained('caracteristicas')->onDelete('cascade');
-            $table->foreignId('Master_idMaster')->constrained('masters')->onDelete('cascade');
-            $table->foreignId('Inventario_idInventario')->constrained('inventarios')->onDelete('cascade')->unique();
+            $table->foreignId('caracteristicas_id')->constrained('caracteristicas')->onDelete('cascade');
+            $table->foreignId('master_id')->constrained('master')->onDelete('cascade');
+            $table->foreignId('inventario_id')->constrained('inventario')->onDelete('cascade')->unique();
             $table->string('Mderecha', 45)->nullable();
             $table->string('Mizquierda', 45)->nullable();
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration {
     }
 
     public function down() {
-        Schema::dropIfExists('personajes');
+        Schema::dropIfExists('personaje');
     }
 };

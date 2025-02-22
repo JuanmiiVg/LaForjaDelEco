@@ -6,15 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up() {
-        Schema::create('receta', function (Blueprint $table) {
-            $table->foreignId('pocion_id')->constrained('pocion')->onDelete('cascade');
+        Schema::create('inventario_has_ingrediente', function (Blueprint $table) {
+            $table->foreignId('inventario_id')->constrained('inventario')->onDelete('cascade');
             $table->foreignId('ingrediente_id')->constrained('ingrediente')->onDelete('cascade');
-            $table->primary(['pocion_id', 'ingrediente_id']);
+            $table->string('cantidad', 45)->nullable();
+            $table->primary(['inventario_id', 'ingrediente_id']);
             $table->timestamps();
         });
     }
 
     public function down() {
-        Schema::dropIfExists('receta');
+        Schema::dropIfExists('inventario_has_ingrediente');
     }
 };

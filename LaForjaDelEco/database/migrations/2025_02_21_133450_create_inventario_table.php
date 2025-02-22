@@ -6,15 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up() {
-        Schema::create('inventarios', function (Blueprint $table) {
-            $table->id('idInventario');
+        Schema::create('inventario', function (Blueprint $table) {
+            $table->id();
             $table->string('cargaMax', 45)->nullable();
             $table->timestamps();
         });
     }
 
     public function down() {
-        Schema::dropIfExists('inventarios');
+        Schema::dropIfExists('inventario');
     }
 };
 

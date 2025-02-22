@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up() {
         Schema::create('inventario_has_arma', function (Blueprint $table) {
-            $table->foreignId('Inventario_idInventario')->constrained('inventarios')->onDelete('cascade');
-            $table->foreignId('Arma_idArmas')->constrained('armas')->onDelete('cascade');
+            $table->foreignId('inventario_id')->constrained('inventario')->onDelete('cascade');
+            $table->foreignId('arma_id')->constrained('arma')->onDelete('cascade');
             $table->string('cantidad', 45)->nullable();
-            $table->primary(['Inventario_idInventario', 'Arma_idArmas']);
+            $table->primary(['inventario_id', 'arma_id']);
             $table->timestamps();
         });
     }
