@@ -9,7 +9,7 @@ class pocion extends Model
 {
     use HasFactory;
     protected $table = 'pocion';
-    protected $fillable = ['nombre', 'imagen', 'duracion', 'efecto', 'tamaño', 'peso'];
+    protected $fillable = ['nombre', 'imagen', 'duracion', 'efecto', 'tamano', 'peso'];
 
     public function inventario()
     {

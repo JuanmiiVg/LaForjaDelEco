@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('imagen', 250)->nullable();
             $table->string('duracion', 45)->nullable();
             $table->string('efecto', 255)->nullable();
-            $table->string('tamaño', 45)->nullable();
+            $table->string('tamano', 45)->nullable();
             $table->string('peso', 45)->nullable();
             $table->timestamps();
         });

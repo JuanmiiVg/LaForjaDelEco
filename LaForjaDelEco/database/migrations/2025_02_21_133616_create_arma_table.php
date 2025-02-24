@@ -11,8 +11,8 @@ return new class extends Migration {
             $table->string('nombre', 45)->nullable();
             $table->string('imagen', 250)->nullable();
             $table->string('categoria', 45)->nullable();
-            $table->string('tamaño', 45)->nullable();
-            $table->string('daño', 45)->nullable();
+            $table->string('tamano', 45)->nullable();
+            $table->string('dano', 45)->nullable();
             $table->string('peso', 45)->nullable();
             $table->timestamps();
         });

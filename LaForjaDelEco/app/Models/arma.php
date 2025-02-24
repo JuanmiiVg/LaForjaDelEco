@@ -10,7 +10,7 @@ class arma extends Model
     use HasFactory;
     protected $table = 'armas';
     protected $primaryKey = 'id';
-    protected $fillable = ['nombre', 'imagen', 'categoria', 'tamaño', 'peso'];
+    protected $fillable = ['nombre', 'imagen', 'categoria', 'tamano', 'dano','peso'];
 
     public function inventario()
     {
