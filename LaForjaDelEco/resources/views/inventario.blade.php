@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
-
 </head>
 
 <body>
@@ -17,7 +16,6 @@
             </div>
             <div class="equipamiento">
                 <div class="manoI"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaI"></div>
-
                 <div class="manoD"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaD"></div>
             </div>
             <style>
@@ -65,10 +63,8 @@
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
                     </form>
-
                     <a class="boton">&nbsp;Detalles&nbsp;</a>
                 </div>
-
             </div>
             @endforeach
             @foreach($materiales as $material)

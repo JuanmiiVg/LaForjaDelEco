@@ -38,27 +38,48 @@ class PersonajeController extends Controller
         // Retorno la vista con los datos
         return view("inventario", compact("personaje", "caracteristicas", "inventario", "pociones", "ingredientes", "armas", "materiales"));
     }
-    public function deleteArma($idArm, $id)
+
+    public function deleteArma($id, $idArm)
     {
         $arma = Arma::find($idArm);
-        $arma->delete();
-        PersonajeController::index($id);
+        if ($arma) {
+            Inventario_Has_Arma::where('arma_id', $idArm)->delete();
+            $arma->delete();
+        }
+
+        return $this->index($id);
     }
-    public function deletePocion($idPoc,$id)
+
+    public function deletePocion($id, $idPoc)
     {
         $pocion = Pocion::find($idPoc);
-        $pocion->delete();
-        PersonajeController::index($id);
+        if ($pocion) {
+            Inventario_Has_Pocion::where('pocion_id', $idPoc)->delete();
+            $pocion->delete();
+        }
+
+        return $this->index($id);
     }
-    public function deleteMaterial($idMat,$id)
+
+    public function deleteMaterial($id, $idMat)
     {
         $material = Material::find($idMat);
-        $material->delete();
-        PersonajeController::index($id);
+        if ($material) {
+            Inventario_Has_Material::where('material_id', $idMat)->delete();
+            $material->delete();
+        }
+
+        return $this->index($id);
     }
-    public function deleteIngrediente($idIng,$id){
-        $arma = Arma::find($idIng);
-        $arma->delete();
-        PersonajeController::index($id);
+
+    public function deleteIngrediente($id, $idIng)
+    {
+        $ingrediente = Ingrediente::find($idIng);
+        if ($ingrediente) {
+            Inventario_Has_Ingrediente::where('ingrediente_id', $idIng)->delete();
+            $ingrediente->delete();
+        }
+
+        return $this->index($id);
     }
 }

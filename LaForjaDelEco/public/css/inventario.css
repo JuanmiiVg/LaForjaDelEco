@@ -144,7 +144,6 @@ html, body {
     justify-items: center;
   }
   .boton {
-    display: grid;
     display: inline-block;
     padding: 10px 20px;
     background-image: url("../Img/descarga__5_-removebg-preview.png");
@@ -154,8 +153,10 @@ html, body {
     text-decoration: none; /* Quitar el subrayado */
     font-size: 16px;
     transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    border: none; /* Eliminar el borde */
+    color: black; /* Color del texto */
+    background-color: none;
   }
   .boton:hover {
-    background-color: rgba(37, 27, 27, 0.5); /* Fondo semi-transparente al pasar el ratón */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al pasar el ratón */
   }
