@@ -56,12 +56,10 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$pocion -> nombre}}</p>
                 <div class="botones">
-                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
-
-                    <form action="" method="POST">
+                    <form action="{{ route('pocion.eliminar', ['id' => $personaje->id, 'idPoc' => $pocion->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Eliminar Poción</button>
+                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
                     </form>
 
                     <a class="boton">&nbsp;Detalles&nbsp;</a>
