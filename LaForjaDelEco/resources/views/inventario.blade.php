@@ -46,8 +46,12 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$arma -> nombre}}</p>
                 <div class="botones">
-                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
-                    <a class="boton" href="">&nbsp;Detalles&nbsp;</a>
+                    <form action="{{ route('arma.eliminar', ['id' => $personaje->id, 'idArm' => $arma->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                    </form>
+                    <a class="boton">&nbsp;Detalles&nbsp;</a>
                 </div>
             </div>
             @endforeach
@@ -72,7 +76,11 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$material -> nombre}}</p>
                 <div class="botones">
-                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
+                    <form action="{{ route('material.eliminar', ['id' => $personaje->id, 'idMat' => $material->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                    </form>
                     <a class="boton">&nbsp;Detalles&nbsp;</a>
                 </div>
             </div>
@@ -82,7 +90,11 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$ingrediente -> nombre}}</p>
                 <div class="botones">
-                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
+                    <form action="{{ route('ingrediente.eliminar', ['id' => $personaje->id, 'idIng' => $ingrediente->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                    </form>
                     <a class="boton">&nbsp;Detalles&nbsp;</a>
                 </div>
             </div>
