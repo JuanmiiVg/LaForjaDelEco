@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get("/personaje/{id}",[personajeController::class,"index"]);
-
+//Ruta que muestra el inventario del personaje
+Route::get("/personaje/{id}",[personajeController::class,"index"])->name("inventario");
+//Rutas para borrar
+Route::get("personaje/{id}/eliminar/{idArm}",[personajeController::class,"deleteArma"]);
+Route::get("personaje/{id}/eliminar/{idPoc}",[personajeController::class,"deletePocion"]);
+Route::get("personaje/{id}/eliminar/{idMat}",[personajeController::class,"deleteMaterial"]);
+Route::get("personaje/{id}/eliminar/{idIng}",[personajeController::class,"deleteIngrediente"]);

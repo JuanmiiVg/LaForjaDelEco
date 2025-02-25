@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class arma extends Model
 {
     use HasFactory;
-    protected $table = 'armas';
+    protected $table = 'arma';
     protected $primaryKey = 'id';
     protected $fillable = ['nombre', 'imagen', 'categoria', 'tamano', 'dano','peso'];
 

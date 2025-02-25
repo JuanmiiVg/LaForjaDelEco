@@ -41,38 +41,54 @@
             </div>
         </div>
         <div class="derecha">
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
-            <div class="cuadrado"></div>
+            @foreach($armas as $arma)
+            <div class="cuadrado">
+                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <p>{{$arma -> nombre}}</p>
+                <div class="botones">
+                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
+                    <a class="boton" href="">&nbsp;Detalles&nbsp;</a>
+                </div>
+            </div>
+            @endforeach
+            @foreach($pociones as $pocion)
+            <div class="cuadrado">
+                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <p>{{$pocion -> nombre}}</p>
+                <div class="botones">
+                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
+
+                    <form action="" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Eliminar Poción</button>
+                    </form>
+
+                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                </div>
+
+            </div>
+            @endforeach
+            @foreach($materiales as $material)
+            <div class="cuadrado">
+                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <p>{{$material -> nombre}}</p>
+                <div class="botones">
+                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
+                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                </div>
+            </div>
+            @endforeach
+            @foreach($ingredientes as $ingrediente)
+            <div class="cuadrado">
+                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <p>{{$ingrediente -> nombre}}</p>
+                <div class="botones">
+                    <a class="boton">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</a><br>
+                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </body>

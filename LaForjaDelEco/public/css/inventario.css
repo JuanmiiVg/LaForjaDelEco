@@ -5,34 +5,33 @@ html, body {
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
-}
-
-.izquierda {
+  }
+ 
+  .izquierda {
     background-image: url("../Img/fondo.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    border-right: 5px double burlywood; /* Agrega un borde negro a la derecha */
-}
-
-.grid-container {
+  }
+  
+  .grid-container {
     display: grid;
     grid-template-columns: minmax(0, 20%) minmax(0, 80%);
     height: 100vh;
     width: 100vw;
     background-color: white;
     text-align: center;
-}
-
-.equipamiento {
+  }
+  
+  .equipamiento {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: white;
     text-align: center;
     background-color: transparent !important;
-}
-
-.manoI, .manoD {
+  }
+  
+  .manoI, .manoD {
     width: 100%;
     height: 150px;
     overflow: hidden;
@@ -40,67 +39,81 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.perfil {
+  }
+  
+  .perfil {
     margin-top: 75px;
-}
-
-.manoI img, .manoD img {
+  }
+  
+  .manoI img, .manoD img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-}
+  }
+  
 
-.derecha {
+  
+  .derecha {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-y: auto;
     padding: 5px;
     gap: 5px;
-    background-image: url(../Img/medieval-castle-bridge-8taa2c6wt.jpg);
     background-size: cover;
     background-position: center;
     justify-items: center;
     align-items: center;
-    border-left: 5px double burlywood; /* Agrega un borde negro a la derecha */
-}
-
-.cuadrado {
+    background-image:url("../Img/medieval-castle-bridge-8taa2c6wt.jpg");
+  }
+  
+  .cuadrado {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 30px;
     width: 250px;
     height: 350px;
-    justify-content: center;
+    justify-content: space-between;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    align-items: center;
     margin-top: 10px;
     background-image: url("../Img/1f8431b4c254df9de359cac616b52a58.png");
-}
-
-#range {
+  }
+  .cuadrado .item {
+    height: 150px;
+    display: block;
+    margin-top: 50px;
+  }
+  .cuadrado p {
+    margin: 10px 0;
+  }
+  .cuadrado .botones {
+    display: flex;
+    justify-content: space-around;
+    width: 85%;
+  }
+  #range {
     pointer-events: none;
-}
-
-#caracteristicas input[type="range"] {
+  }
+  
+  #caracteristicas input[type="range"] {
     margin-bottom: 5px;
     width: 80%;
     pointer-events: none;
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
-}
-
-#caracteristicas input[type="range"]::-webkit-slider-runnable-track {
+  }
+  
+  #caracteristicas input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 8px;
     background: linear-gradient(to right, black, red);
     border-radius: 5px;
-}
-
-#caracteristicas input[type="range"]::-webkit-slider-thumb {
+  }
+  
+  #caracteristicas input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 30px;
@@ -109,19 +122,40 @@ html, body {
     background-size: cover;
     cursor: pointer;
     margin-top: -11px;
-}
-
-#caracteristicas input[type="range"]::-moz-range-track {
+  }
+  
+  #caracteristicas input[type="range"]::-moz-range-track {
     width: 100%;
     height: 8px;
     background: linear-gradient(to right, black, red);
     border-radius: 5px;
-}
-
-#caracteristicas input[type="range"]::-moz-range-thumb {
+  }
+  
+  #caracteristicas input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 30px;
     background: url('../Img/middle-ages-custom-cursor-removebg-preview.png') no-repeat center;
     background-size: cover;
     cursor: pointer;
-}
+  }
+  .botones{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+  .boton {
+    display: grid;
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: url("../Img/descarga__5_-removebg-preview.png");
+    background-size: cover; /* Ajustar el tamaño de la imagen */
+    background-position: center; /* Centrar la imagen */
+    text-align: center;
+    text-decoration: none; /* Quitar el subrayado */
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+  }
+  .boton:hover {
+    background-color: rgba(37, 27, 27, 0.5); /* Fondo semi-transparente al pasar el ratón */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al pasar el ratón */
+  }
