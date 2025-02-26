@@ -10,8 +10,8 @@ class master extends Model
     protected $table = 'master';
     protected $fillable = ['nombre', 'imagen', 'password' , 'email'];
 
-    public function personaje()
+    public function master()
     {
-        return $this->hasOne(Personaje::class);
+        return $this->hasOne(user::class);
     }
 }

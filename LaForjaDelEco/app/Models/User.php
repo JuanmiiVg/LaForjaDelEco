@@ -2,47 +2,54 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
     protected $fillable = [
-        'name',
+        'nombrePersonaje',
         'email',
         'password',
+        'rubies',
+        'caracteristicas_id',
+        'master_id',
+        'inventario_id',
+        'Mderecha',
+        'Mizquierda'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Relación con Características
+    public function caracteristicas()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Caracteristicas::class);
+    }
+
+    // Relación con Inventario
+    public function inventario()
+    {
+        return $this->belongsTo(Inventario::class);
+    }
+
+    // Relación con Master
+    public function master()
+    {
+        return $this->belongsTo(Master::class);
+    }
+
+    // Evento para crear automáticamente Inventario y Características
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $caracteristicas = Caracteristicas::create();
+            $user->caracteristicas_id = $caracteristicas->id;
+
+            $inventario = Inventario::create();
+            $user->inventario_id = $inventario->id;
+        });
     }
 }

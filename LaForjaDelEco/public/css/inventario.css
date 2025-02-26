@@ -143,6 +143,7 @@ html, body {
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
   }
+
   .boton {
     display: inline-block;
     padding: 10px 20px;
@@ -154,8 +155,8 @@ html, body {
     font-size: 16px;
     transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
     border: none; /* Eliminar el borde */
-    color: black; /* Color del texto */
-    background-color: none;
+    color: black; /* Hacer el texto visible */
+    background-color: transparent; /* Hacer el fondo transparente */
   }
   .boton:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al pasar el ratón */

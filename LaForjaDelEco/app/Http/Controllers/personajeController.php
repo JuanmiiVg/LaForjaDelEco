@@ -46,8 +46,7 @@ class PersonajeController extends Controller
             Inventario_Has_Arma::where('arma_id', $idArm)->delete();
             $arma->delete();
         }
-
-        return $this->index($id);
+        return redirect()->route('personaje.index', ['id' => $id]);
     }
 
     public function deletePocion($id, $idPoc)
@@ -58,7 +57,7 @@ class PersonajeController extends Controller
             $pocion->delete();
         }
 
-        return $this->index($id);
+        return redirect()->route('personaje.index', ['id' => $id]);
     }
 
     public function deleteMaterial($id, $idMat)
@@ -69,7 +68,7 @@ class PersonajeController extends Controller
             $material->delete();
         }
 
-        return $this->index($id);
+        return redirect()->route('personaje.index', ['id' => $id]);
     }
 
     public function deleteIngrediente($id, $idIng)
@@ -80,6 +79,6 @@ class PersonajeController extends Controller
             $ingrediente->delete();
         }
 
-        return $this->index($id);
+        return redirect()->route('personaje.index', ['id' => $id]);
     }
 }
