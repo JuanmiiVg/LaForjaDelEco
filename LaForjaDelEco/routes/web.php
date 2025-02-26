@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth\ProviderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonajeController;
@@ -10,6 +11,13 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+//Socialite
+use Laravel\Socialite\Facades\Socialite;
+
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
+
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 
 // Ruta que muestra el inventario del personaje
