@@ -12,7 +12,7 @@
     <div class="grid-container">
         <div class="izquierda">
             <div class="perfil"> <img src="{{ asset('Img/images-removebg-preview.png') }}" height="250" alt=""><br>
-                <label for="perfil">{{ $personaje->nombrePersonaje }}</label>
+                <label for="perfil">{{ $user->nombrePersonaje }}</label>
             </div>
             <div class="equipamiento">
                 <div class="manoI"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaI"></div>
@@ -37,6 +37,7 @@
                 <label for="Arcano">Arcano</label><br>
                 <input id="arcano" value="{{ $caracteristicas->arcano }}" type="range" min="0" max="100" oninput="document.getElementById('arcanoValue').innerText = this.value;"><span id="arcanoValue">{{ $caracteristicas->arcano }}</span><br>
             </div>
+            
         </div>
         <div class="derecha">
             @foreach($armas as $arma)
@@ -44,7 +45,7 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$arma -> nombre}}</p>
                 <div class="botones">
-                    <form action="{{ route('arma.eliminar', ['id' => $personaje->id, 'idArm' => $arma->id]) }}" method="POST">
+                    <form action="{{ route('arma.eliminar', ['id' => $user->id, 'idArm' => $arma->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
@@ -58,7 +59,7 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$pocion -> nombre}}</p>
                 <div class="botones">
-                    <form action="{{ route('pocion.eliminar', ['id' => $personaje->id, 'idPoc' => $pocion->id]) }}" method="POST">
+                    <form action="{{ route('pocion.eliminar', ['id' => $user->id, 'idPoc' => $pocion->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
@@ -72,7 +73,7 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$material -> nombre}}</p>
                 <div class="botones">
-                    <form action="{{ route('material.eliminar', ['id' => $personaje->id, 'idMat' => $material->id]) }}" method="POST">
+                    <form action="{{ route('material.eliminar', ['id' => $user->id, 'idMat' => $material->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
@@ -86,7 +87,7 @@
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$ingrediente -> nombre}}</p>
                 <div class="botones">
-                    <form action="{{ route('ingrediente.eliminar', ['id' => $personaje->id, 'idIng' => $ingrediente->id]) }}" method="POST">
+                    <form action="{{ route('ingrediente.eliminar', ['id' => $user->id, 'idIng' => $ingrediente->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>

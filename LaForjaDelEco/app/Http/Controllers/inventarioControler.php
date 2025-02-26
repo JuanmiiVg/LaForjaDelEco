@@ -7,13 +7,7 @@ class inventarioControler extends Controller
 {
     
 
-    public function mostrarInventario($id)
-    {
-        $personaje = Personaje::findOrFail($id);
-        $inventario = $personaje->cargarInventario();
-    
-        return view('inventario', compact('personaje', 'inventario'));
-    }
+   
     
     
 }

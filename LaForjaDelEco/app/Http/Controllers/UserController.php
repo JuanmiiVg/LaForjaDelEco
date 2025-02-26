@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Personaje;
+use App\Models\User;
 use App\Models\Caracteristicas;
 use App\Models\Inventario;
 use App\Models\Inventario_Has_Arma;
@@ -15,19 +15,19 @@ use App\Models\Pocion;
 use App\Models\Ingrediente;
 use App\Models\Material;
 
-class PersonajeController extends Controller
+class UserController extends Controller
 {
     public function index($id)
     {
-        $personaje = Personaje::findOrFail($id);
-        $caracteristicas = Caracteristicas::findOrFail($personaje->caracteristicas_id);
-        $inventario = Inventario::findOrFail($personaje->inventario_id);
+        $user = user::findOrFail($id);
+        $caracteristicas = Caracteristicas::findOrFail($user->caracteristicas_id);
+        $inventario = Inventario::findOrFail($user->inventario_id);
 
         // Obtengo los registros de objetos asociados al inventario
-        $pociones_datos = Inventario_Has_Pocion::where("inventario_id", $personaje->inventario_id)->get();
-        $ingredientes_datos = Inventario_Has_Ingrediente::where("inventario_id", $personaje->inventario_id)->get();
-        $armas_datos = Inventario_Has_Arma::where("inventario_id", $personaje->inventario_id)->get();
-        $materiales_datos = Inventario_Has_Material::where("inventario_id", $personaje->inventario_id)->get();
+        $pociones_datos = Inventario_Has_Pocion::where("inventario_id", $user->inventario_id)->get();
+        $ingredientes_datos = Inventario_Has_Ingrediente::where("inventario_id", $user->inventario_id)->get();
+        $armas_datos = Inventario_Has_Arma::where("inventario_id", $user->inventario_id)->get();
+        $materiales_datos = Inventario_Has_Material::where("inventario_id", $user->inventario_id)->get();
 
         // Obtengo los objetos en sí
         $pociones = Pocion::whereIn("id", $pociones_datos->pluck("pocion_id"))->get();
@@ -36,7 +36,7 @@ class PersonajeController extends Controller
         $materiales = Material::whereIn("id", $materiales_datos->pluck("material_id"))->get();
 
         // Retorno la vista con los datos
-        return view("inventario", compact("personaje", "caracteristicas", "inventario", "pociones", "ingredientes", "armas", "materiales"));
+        return view("inventario", compact("user", "caracteristicas", "inventario", "pociones", "ingredientes", "armas", "materiales"));
     }
 
     public function deleteArma($id, $idArm)
@@ -46,7 +46,7 @@ class PersonajeController extends Controller
             Inventario_Has_Arma::where('arma_id', $idArm)->delete();
             $arma->delete();
         }
-        return redirect()->route('personaje.index', ['id' => $id]);
+        return redirect()->route('user.index', ['id' => $id]);
     }
 
     public function deletePocion($id, $idPoc)
@@ -57,7 +57,7 @@ class PersonajeController extends Controller
             $pocion->delete();
         }
 
-        return redirect()->route('personaje.index', ['id' => $id]);
+        return redirect()->route('user.index', ['id' => $id]);
     }
 
     public function deleteMaterial($id, $idMat)
@@ -68,7 +68,7 @@ class PersonajeController extends Controller
             $material->delete();
         }
 
-        return redirect()->route('personaje.index', ['id' => $id]);
+        return redirect()->route('user.index', ['id' => $id]);
     }
 
     public function deleteIngrediente($id, $idIng)
@@ -79,6 +79,6 @@ class PersonajeController extends Controller
             $ingrediente->delete();
         }
 
-        return redirect()->route('personaje.index', ['id' => $id]);
+        return redirect()->route('user.index', ['id' => $id]);
     }
 }

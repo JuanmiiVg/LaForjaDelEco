@@ -5,19 +5,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonajeController;
 use App\Models\inventario;
 use App\Models\personaje;
-
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 // Ruta que muestra el inventario del personaje
-Route::get("/personaje/{id}", [PersonajeController::class, "index"])->name("personaje.index");
+Route::get("/user/{id}", [UserController::class, "index"])->name("user.index");
 
-Route::delete('/personaje/{id}/eliminarArma/{idArm}', [PersonajeController::class, 'deleteArma'])->name("arma.eliminar");
-Route::delete('/personaje/{id}/eliminarPocion/{idPoc}', [PersonajeController::class, 'deletePocion'])->name("pocion.eliminar");
-Route::delete('/personaje/{id}/eliminarMaterial/{idMat}', [PersonajeController::class, 'deleteMaterial'])->name("material.eliminar");
-Route::delete('/personaje/{id}/eliminarIngrediente/{idIng}', [PersonajeController::class, 'deleteIngrediente'])->name("ingrediente.eliminar");
+Route::delete('/user/{id}/eliminarArma/{idArm}', [UserController::class, 'deleteArma'])->name("arma.eliminar");
+Route::delete('/user/{id}/eliminarPocion/{idPoc}', [UserController::class, 'deletePocion'])->name("pocion.eliminar");
+Route::delete('/user/{id}/eliminarMaterial/{idMat}', [UserController::class, 'deleteMaterial'])->name("material.eliminar");
+Route::delete('/user/{id}/eliminarIngrediente/{idIng}', [UserController::class, 'deleteIngrediente'])->name("ingrediente.eliminar");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,4 +30,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

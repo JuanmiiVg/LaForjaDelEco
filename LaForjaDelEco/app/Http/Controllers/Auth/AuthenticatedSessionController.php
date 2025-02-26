@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +23,30 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
+    
+
+        // Authenticate the user
         $request->authenticate();
 
+        // Regenerate the session
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Get the user by email
+        $user = User::where('email', $request->input('email'))->first();
+
+        // Check if user exists and get the ID
+        if ($user) {
+            $userId = $user->id;
+
+
+            // Redirect to user.index with user ID
+            return redirect()->route('user.index', ['id' => $userId]);
+        } else {
+            // Handle the case where the user is not found
+            return redirect()->route('login')->withErrors(['email' => 'User not found']);
+        }
     }
 
     /**
