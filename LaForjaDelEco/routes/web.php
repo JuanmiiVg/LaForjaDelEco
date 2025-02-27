@@ -30,6 +30,10 @@ Route::delete('/user/{id}/eliminarIngrediente/{idIng}', [UserController::class, 
 Route::get('/user/{id}/caracteristicas/{idC}', [CaracteristicasController::class, 'edit'])->name("caracteristicas.edit");
 Route::patch('/user/{id}/caracteristicas/{idC}', [CaracteristicasController::class, 'update'])->name("caracteristicas.update");
 
+//Rutas para equipar elemntos del inventario
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

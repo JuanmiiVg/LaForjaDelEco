@@ -21,8 +21,8 @@
             </div>
 
             <div class="equipamiento">
-                <div class="manoI"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaI"></div>
-                <div class="manoD"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaD"></div>
+                <div class="manoI"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaI"></div>
+                <div class="manoD"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaD"></div>
             </div>
             <style>
                 #caracteristicas input[type="range"] {
@@ -55,6 +55,8 @@
             <div class="cuadrado">
                 <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
                 <p>{{$arma -> nombre}}</p>
+                <form action="" method="POST"></form>
+                
                 <div class="botones">
                     <form action="{{ route('arma.eliminar', ['id' => $user->id, 'idArm' => $arma->id]) }}" method="POST">
                         @csrf

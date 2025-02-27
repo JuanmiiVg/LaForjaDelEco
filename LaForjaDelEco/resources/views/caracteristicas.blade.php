@@ -61,10 +61,14 @@
 
                 <div class="mb-3">
                     <label for="imagen" class="form-label">Imagen del Personaje</label>
-                    <input type="file" name="imagen" id="imagen" class="form-control">
+                    <input type="file" name="imagen" id="imagen" class="form-control custom-file-input">
                 </div>
-
-                <input type="submit" class="botonC">
+                <style>
+                    .botonC {
+                        margin-top: 50px;
+                    }
+                </style>
+                <input type="submit" class="botonC no-text">
             </form>
         </div>
     </div>

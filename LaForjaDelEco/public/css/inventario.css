@@ -26,21 +26,30 @@ body {
 
 .equipamiento {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: minmax(0, 50%) minmax(0, 50%);
     background-color: white;
     text-align: center;
     background-color: transparent !important;
+    justify-content: center;
+    align-items: center;
 }
-
+.manoI{
+    margin-left: 50px;
+}
+.manoD{
+    margin-right: 50px;
+}
 .manoI,
 .manoD {
-    width: 100%;
-    height: 150px;
+    
+    height: 100px;
     overflow: hidden;
     background-color: transparent !important;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-color: grey;
+    border-style: double;
 }
 
 .perfil {
@@ -243,6 +252,10 @@ body {
     cursor: pointer;
 }
 
+.no-text {
+    color: transparent;
+    text-shadow: none;
+}
 .pagina {
     height: 100vh;
     width: 100vw;
@@ -252,3 +265,4 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
+
