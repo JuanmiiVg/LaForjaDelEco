@@ -11,9 +11,15 @@
 <body>
     <div class="grid-container">
         <div class="izquierda">
-            <div class="perfil"> <img src="{{ asset('Img/images-removebg-preview.png') }}" height="250" alt=""><br>
+            <div class="perfil">
+                @if($user->imagen)
+                    <img src="{{ asset('storage/' . $user->imagen) }}" height="250" alt="Imagen del Personaje"><br>
+                @else
+                    <img src="{{ asset('Img/9ceb07252b117d785feb84c1c3d589b7-removebg-preview.png') }}" height="250" alt="Imagen por Defecto"><br>
+                @endif
                 <label for="perfil">{{ $user->nombrePersonaje }}</label>
             </div>
+
             <div class="equipamiento">
                 <div class="manoI"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaI"></div>
                 <div class="manoD"><img height="100" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="armaD"></div>
@@ -36,6 +42,11 @@
                 <input id="inteligencia" value="{{ $caracteristicas->inteligencia }}" type="range" min="0" max="100" oninput="document.getElementById('inteligenciaValue').innerText = this.value;"><span id="inteligenciaValue">{{ $caracteristicas->inteligencia }}</span><br>
                 <label for="Arcano">Arcano</label><br>
                 <input id="arcano" value="{{ $caracteristicas->arcano }}" type="range" min="0" max="100" oninput="document.getElementById('arcanoValue').innerText = this.value;"><span id="arcanoValue">{{ $caracteristicas->arcano }}</span><br>
+
+                <form action="{{ route('caracteristicas.edit', ['id' => $user->id, 'idC' => $caracteristicas->id]) }}" method="GET">
+                    @csrf
+                    <button class="botonC" type="submit"></button>
+                </form>
             </div>
             
         </div>

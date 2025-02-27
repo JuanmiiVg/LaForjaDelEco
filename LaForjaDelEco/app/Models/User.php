@@ -13,6 +13,7 @@ class User extends Authenticatable
         'nombrePersonaje',
         'email',
         'password',
+        'imagen',
         'rubies',
         'caracteristicas_id',
         'master_id',

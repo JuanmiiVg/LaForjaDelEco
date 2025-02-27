@@ -1,37 +1,39 @@
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
-  }
- 
-  .izquierda {
+}
+
+.izquierda {
     background-image: url("../Img/fondo.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-  }
-  
-  .grid-container {
+}
+
+.grid-container {
     display: grid;
     grid-template-columns: minmax(0, 20%) minmax(0, 80%);
     height: 100vh;
     width: 100vw;
     background-color: white;
     text-align: center;
-  }
-  
-  .equipamiento {
+}
+
+.equipamiento {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: white;
     text-align: center;
     background-color: transparent !important;
-  }
-  
-  .manoI, .manoD {
+}
+
+.manoI,
+.manoD {
     width: 100%;
     height: 150px;
     overflow: hidden;
@@ -39,21 +41,20 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .perfil {
+}
+
+.perfil {
     margin-top: 75px;
-  }
-  
-  .manoI img, .manoD img {
+}
+
+.manoI img,
+.manoD img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-  }
-  
+}
 
-  
-  .derecha {
+.derecha {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     overflow-y: auto;
@@ -63,10 +64,10 @@ html, body {
     background-position: center;
     justify-items: center;
     align-items: center;
-    background-image:url("../Img/medieval-castle-bridge-8taa2c6wt.jpg");
-  }
-  
-  .cuadrado {
+    background-image: url("../Img/medieval-castle-bridge-8taa2c6wt.jpg");
+}
+
+.cuadrado {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,41 +80,144 @@ html, body {
     background-repeat: no-repeat;
     margin-top: 10px;
     background-image: url("../Img/1f8431b4c254df9de359cac616b52a58.png");
-  }
-  .cuadrado .item {
+}
+
+.cuadrado .item {
     height: 150px;
     display: block;
     margin-top: 50px;
-  }
-  .cuadrado p {
+}
+
+.cuadrado p {
     margin: 10px 0;
-  }
-  .cuadrado .botones {
+}
+
+.cuadrado .botones {
     display: flex;
     justify-content: space-around;
     width: 85%;
-  }
-  #range {
-    pointer-events: none;
-  }
-  
-  #caracteristicas input[type="range"] {
+}
+
+#caracteristicas input[type="range"] {
     margin-bottom: 5px;
     width: 80%;
     pointer-events: none;
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
-  }
-  
-  #caracteristicas input[type="range"]::-webkit-slider-runnable-track {
+}
+
+#caracteristicas input[type="range"]::-webkit-slider-runnable-track {
     width: 100%;
     height: 8px;
     background: linear-gradient(to right, black, red);
     border-radius: 5px;
-  }
-  
-  #caracteristicas input[type="range"]::-webkit-slider-thumb {
+}
+
+#caracteristicas input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
+        no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+    margin-top: -11px;
+}
+
+#caracteristicas input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to right, black, red);
+    border-radius: 5px;
+}
+
+#caracteristicas input[type="range"]::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
+        no-repeat center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.botones {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: url("../Img/descarga__5_-removebg-preview.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    color: black;
+    background-color: transparent;
+}
+
+.botonC {
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: url("../Img/769b70f99dfa67b5a6294178c957b7b7-removebg-preview.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    color: black;
+    background-color: transparent;
+    height: 150px;
+    width: 150px;
+}
+
+.boton:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.botonC:hover {
+    background-image: url("../Img/73350effcab80e9eabf1f9b16998e59c-removebg-preview.png");
+}
+
+#caracteristicasEdit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#caracteristicasEdit label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#caracteristicasEdit input[type="range"] {
+    margin-bottom: 20px;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+}
+
+#caracteristicasEdit input[type="range"]::-webkit-slider-runnable-track {
+    width: 50%;
+    height: 8px;
+    background: linear-gradient(to right, black, red);
+    border-radius: 5px;
+}
+
+#caracteristicasEdit input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 30px;
@@ -122,42 +226,29 @@ html, body {
     background-size: cover;
     cursor: pointer;
     margin-top: -11px;
-  }
-  
-  #caracteristicas input[type="range"]::-moz-range-track {
-    width: 100%;
+}
+
+#caracteristicasEdit input[type="range"]::-moz-range-track {
+    width: 50%;
     height: 8px;
     background: linear-gradient(to right, black, red);
     border-radius: 5px;
-  }
-  
-  #caracteristicas input[type="range"]::-moz-range-thumb {
+}
+
+#caracteristicasEdit input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 30px;
     background: url('../Img/middle-ages-custom-cursor-removebg-preview.png') no-repeat center;
     background-size: cover;
     cursor: pointer;
-  }
-  .botones{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
-  }
+}
 
-  .boton {
-    display: inline-block;
-    padding: 10px 20px;
-    background-image: url("../Img/descarga__5_-removebg-preview.png");
-    background-size: cover; /* Ajustar el tamaño de la imagen */
-    background-position: center; /* Centrar la imagen */
+.pagina {
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
     text-align: center;
-    text-decoration: none; /* Quitar el subrayado */
-    font-size: 16px;
-    transition: background-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
-    border: none; /* Eliminar el borde */
-    color: black; /* Hacer el texto visible */
-    background-color: transparent; /* Hacer el fondo transparente */
-  }
-  .boton:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra al pasar el ratón */
-  }
+    background-image: url("../Img/surface-\ background-patterns-lin.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
