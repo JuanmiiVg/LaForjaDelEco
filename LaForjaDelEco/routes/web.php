@@ -31,6 +31,11 @@ Route::get('/user/{id}/caracteristicas/{idC}', [CaracteristicasController::class
 Route::patch('/user/{id}/caracteristicas/{idC}', [CaracteristicasController::class, 'update'])->name("caracteristicas.update");
 
 //Rutas para equipar elemntos del inventario
+Route::patch('/user/{id}/equiparArma/{idArm}', [UserController::class, 'equiparArma'])->name("arma.equipar");
+Route::patch('/user/{id}/equiparPocion/{idPoc}', [UserController::class, 'equiparPocion'])->name("pocion.equipar");
+
+//Rutas para desequipar elementos del inventario
+Route::patch('/user/{id}/desequipar', [UserController::class, 'desequipar'])->name("user.desequipar");
 
 
 

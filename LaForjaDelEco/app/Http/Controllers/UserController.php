@@ -81,4 +81,46 @@ class UserController extends Controller
 
         return redirect()->route('user.index', ['id' => $id]);
     }
+
+    public function equiparArma($id, $idArm)
+    {
+        $user = User::find($id);
+        $arma = Arma::find($idArm);
+        if ($user && $arma) {
+            if ($arma->tamano == 1) {
+                // Equipar en mano I o mano D si alguna está vacía
+                if (is_null($user->Mizquierda)) {
+                    $user->Mizquierda = $arma->imagen;
+                } elseif (is_null($user->Mderecha)) {
+                    $user->Mderecha = $arma->imagen;
+                } else {
+                    // Ambas manos ocupadas, no se puede equipar
+                    return redirect()->route('user.index', ['id' => $id])->with('error', 'Ambas manos están ocupadas.');
+                }
+            } elseif ($arma->tamano == 2) {
+                // Equipar en ambas manos si ambas están vacías
+                if (is_null($user->Mizquierda) && is_null($user->Mderecha)) {
+                    $user->Mizquierda = $arma->imagen;
+                    $user->Mderecha = $arma->imagen;
+                } else {
+                    // Una o ambas manos ocupadas, no se puede equipar
+                    return redirect()->route('user.index', ['id' => $id])->with('error', 'Ambas manos deben estar libres para equipar un arma de dos manos.');
+                }
+            }
+            $user->save();
+        }
+
+        return redirect()->route('user.index', ['id' => $id]);
+    }
+    public function desequipar($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->Mizquierda = null;
+            $user->Mderecha = null;
+            $user->save();
+        }
+
+        return redirect()->route('user.index', ['id' => $id]);
+    }
 }

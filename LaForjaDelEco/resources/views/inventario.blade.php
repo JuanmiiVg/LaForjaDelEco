@@ -13,17 +13,41 @@
         <div class="izquierda">
             <div class="perfil">
                 @if($user->imagen)
-                    <img src="{{ asset('storage/' . $user->imagen) }}" height="250" alt="Imagen del Personaje"><br>
+                <img src="{{ asset('storage/' . $user->imagen) }}" height="250" alt="Imagen del Personaje"><br>
                 @else
-                    <img src="{{ asset('Img/9ceb07252b117d785feb84c1c3d589b7-removebg-preview.png') }}" height="250" alt="Imagen por Defecto"><br>
+                <img src="{{ asset('Img/9ceb07252b117d785feb84c1c3d589b7-removebg-preview.png') }}" height="250" alt="Imagen por Defecto"><br>
                 @endif
                 <label for="perfil">{{ $user->nombrePersonaje }}</label>
             </div>
 
             <div class="equipamiento">
-                <div class="manoI"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaI"></div>
-                <div class="manoD"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaD"></div>
+                @if($user->Mizquierda == $user->Mderecha)
+                    @if($user->Mizquierda)
+                        <div class="mano"><img height="100" src="{{ asset('storage/' . $user->Mizquierda) }}" alt="arma"></div>
+                    @else
+                        <div class="mano"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="arma"></div>
+                        <div class="mano"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="arma"></div>
+                    @endif
+                @else
+                    @if($user->Mizquierda)
+                        <div class="manoI"><img height="100" src="{{ asset('storage/' . $user->Mizquierda) }}" alt="armaI"></div>
+                    @else
+                        <div class="manoI"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaI"></div>
+                    @endif
+                    @if($user->Mderecha)
+                        <div class="manoD"><img height="100" src="{{ asset('storage/' . $user->Mderecha) }}" alt="armaD"></div>
+                    @else
+                        <div class="manoD"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaD"></div>
+                    @endif
+                @endif
             </div>
+
+            <form action="{{ route('user.desequipar', ['id' => $user->id]) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <button class="boton" type="submit">Desequipar</button>
+            </form>
+
             <style>
                 #caracteristicas input[type="range"] {
                     margin-bottom: 5px;
@@ -48,22 +72,26 @@
                     <button class="botonC" type="submit"></button>
                 </form>
             </div>
-            
+
         </div>
         <div class="derecha">
             @foreach($armas as $arma)
             <div class="cuadrado">
-                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <img class="item" src="{{ asset('storage/' . $arma->imagen) }}" alt="Imagen no establecida">
                 <p>{{$arma -> nombre}}</p>
-                <form action="" method="POST"></form>
-                
+
+                <a class="boton">&nbsp;Detalles&nbsp;</a>
                 <div class="botones">
                     <form action="{{ route('arma.eliminar', ['id' => $user->id, 'idArm' => $arma->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
                     </form>
-                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                    <form action="{{route('arma.equipar',['id' => $user-> id, 'idArm' => $arma->id])}}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Equipar&nbsp;&nbsp;&nbsp;</button>
+                    </form>
                 </div>
             </div>
             @endforeach
