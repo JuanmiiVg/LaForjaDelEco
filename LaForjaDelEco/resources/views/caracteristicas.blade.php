@@ -24,39 +24,55 @@
                 @csrf
                 @method('patch')
                 @if(is_null($caracteristicas->vigor))
-                <label for="vigor">Vigor</label>
-                <input type="range" id="vigor" name="vigor" min="0" max="100" value="0" oninput="updateValue('vigorValue', this.value)"><br>
-                <span id="vigorValue">0</span><br>
+                <h1>ASIGNA TUS CARACTERISTICAS</h1>
+                <H3>(No pueden sumar mas de 125 )</H3>
+                <span id="totalValue">0</span>
+                <div class="rangeContainer">
+                    <label for="vigor">Vigor</label>
+                    <input type="range" id="vigor" name="vigor" min="0" max="100" value="0" oninput="updateValue('vigorValue', this.value)"><br>
+                    <span id="vigorValue">0</span><br>
+                </div>
+
                 @endif
 
                 @if(is_null($caracteristicas->aguante))
-                <label for="aguante">Aguante</label>
-                <input type="range" id="aguante" name="aguante" min="0" max="100" value="0" oninput="updateValue('aguanteValue', this.value)"><br>
-                <span id="aguanteValue">0</span><br>
+                <div class="rangeContainer">
+                    <label for="aguante">Aguante</label>
+                    <input type="range" id="aguante" name="aguante" min="0" max="100" value="0" oninput="updateValue('aguanteValue', this.value)"><br>
+                    <span id="aguanteValue">0</span><br>
+                </div>
                 @endif
 
                 @if(is_null($caracteristicas->fuerza))
-                <label for="fuerza">Fuerza</label>
-                <input type="range" id="fuerza" name="fuerza" min="0" max="100" value="0" oninput="updateValue('fuerzaValue', this.value)"><br>
-                <span id="fuerzaValue">0</span><br>
+                <div class="rangeContainer">
+                    <label for="fuerza">Fuerza</label>
+                    <input type="range" id="fuerza" name="fuerza" min="0" max="100" value="0" oninput="updateValue('fuerzaValue', this.value)"><br>
+                    <span id="fuerzaValue">0</span><br>
+                </div>
                 @endif
 
                 @if(is_null($caracteristicas->destreza))
-                <label for="destreza">Destreza</label>
-                <input type="range" id="destreza" name="destreza" min="0" max="100" value="0" oninput="updateValue('destrezaValue', this.value)"><br>
-                <span id="destrezaValue">0</span><br>
+                <div class="rangeContainer">
+                    <label for="destreza">Destreza</label>
+                    <input type="range" id="destreza" name="destreza" min="0" max="100" value="0" oninput="updateValue('destrezaValue', this.value)"><br>
+                    <span id="destrezaValue">0</span><br>
+                </div>
                 @endif
 
                 @if(is_null($caracteristicas->inteligencia))
-                <label for="inteligencia">Inteligencia</label>
-                <input type="range" id="inteligencia" name="inteligencia" min="0" max="100" value="0" oninput="updateValue('inteligenciaValue', this.value)"><br>
-                <span id="inteligenciaValue">0</span><br>
+                <div class="rangeContainer">
+                    <label for="inteligencia">Inteligencia</label>
+                    <input type="range" id="inteligencia" name="inteligencia" min="0" max="100" value="0" oninput="updateValue('inteligenciaValue', this.value)"><br>
+                    <span id="inteligenciaValue">0</span><br>
+                </div>
                 @endif
 
                 @if(is_null($caracteristicas->arcano))
-                <label for="arcano">Arcano</label>
-                <input type="range" id="arcano" name="arcano" min="0" max="100" value="0" oninput="updateValue('arcanoValue', this.value)"><br>
-                <span id="arcanoValue">0</span><br>
+                <div class="rangeContainer">
+                    <label for="arcano">Arcano</label>
+                    <input type="range" id="arcano" name="arcano" min="0" max="100" value="0" oninput="updateValue('arcanoValue', this.value)"><br>
+                    <span id="arcanoValue">0</span><br>
+                </div>
                 @endif
 
                 <div class="mb-3">
@@ -76,7 +92,29 @@
     <script>
         function updateValue(id, value) {
             document.getElementById(id).innerText = value;
+            updateTotalValue();
         }
+
+        function updateTotalValue() {
+            const vigor = parseInt(document.getElementById('vigor').value) || 0;
+            const aguante = parseInt(document.getElementById('aguante').value) || 0;
+            const fuerza = parseInt(document.getElementById('fuerza').value) || 0;
+            const destreza = parseInt(document.getElementById('destreza').value) || 0;
+            const inteligencia = parseInt(document.getElementById('inteligencia').value) || 0;
+            const arcano = parseInt(document.getElementById('arcano').value) || 0;
+
+            const total = vigor + aguante + fuerza + destreza + inteligencia + arcano;
+            const totalValueElement = document.getElementById('totalValue');
+            totalValueElement.innerText = total;
+
+            if (total > 125) {
+                totalValueElement.style.color = 'red';
+            } else {
+                totalValueElement.style.color = 'black';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateTotalValue);
     </script>
 </body>
 

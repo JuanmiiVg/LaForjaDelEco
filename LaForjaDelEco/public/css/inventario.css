@@ -33,18 +33,20 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 25px; /* Corrige el margen */
-   
+
     padding: 10px; /* Añade padding para espaciar los elementos */
 }
 
-.manoI{
+.manoI {
     margin-left: 50px;
 }
-.manoD{
+.manoD {
     margin-right: 50px;
 }
 
-.mano,.manoI,.manoD {
+.mano,
+.manoI,
+.manoD {
     height: 100px;
     overflow: hidden;
     background-color: transparent !important;
@@ -58,7 +60,9 @@ body {
 .perfil {
     margin-top: 75px;
 }
-.mano img,.manoI img,.manoD img {
+.mano img,
+.manoI img,
+.manoD img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -108,7 +112,7 @@ body {
     width: 85%;
 }
 
-#caracteristicas{
+#caracteristicas {
     margin-top: 25px;
 }
 
@@ -191,8 +195,8 @@ body {
     border: none;
     color: black;
     background-color: transparent;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
 }
 
 .boton:hover {
@@ -201,6 +205,8 @@ body {
 
 .botonC:hover {
     background-image: url("../Img/73350effcab80e9eabf1f9b16998e59c-removebg-preview.png");
+    height: 125px;
+    width: 125px;
 }
 
 #caracteristicasEdit {
@@ -218,7 +224,7 @@ body {
 
 #caracteristicasEdit input[type="range"] {
     margin-bottom: 20px;
-    width: 100%;
+    width: 75%;
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
@@ -236,14 +242,15 @@ body {
     appearance: none;
     width: 30px;
     height: 30px;
-    background: url('../Img/middle-ages-custom-cursor-removebg-preview.png') no-repeat center;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
+        no-repeat center;
     background-size: cover;
     cursor: pointer;
     margin-top: -11px;
 }
 
 #caracteristicasEdit input[type="range"]::-moz-range-track {
-    width: 50%;
+    width: 40%;
     height: 8px;
     background: linear-gradient(to right, black, red);
     border-radius: 5px;
@@ -252,7 +259,8 @@ body {
 #caracteristicasEdit input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 30px;
-    background: url('../Img/middle-ages-custom-cursor-removebg-preview.png') no-repeat center;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
+        no-repeat center;
     background-size: cover;
     cursor: pointer;
 }
@@ -271,3 +279,9 @@ body {
     background-size: 100% 100%;
 }
 
+.rangeContainer {
+    background-size: 100% 100%;
+    background-image: url("../Img/a1d7ae377b28a1cd7698c715353b4c10-removebg-preview.png");
+    background-repeat: no-repeat;
+    padding: 10px;
+}

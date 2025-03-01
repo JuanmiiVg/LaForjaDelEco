@@ -5,6 +5,7 @@ use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MasterController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,7 +38,8 @@ Route::patch('/user/{id}/equiparPocion/{idPoc}', [UserController::class, 'equipa
 //Rutas para desequipar elementos del inventario
 Route::patch('/user/{id}/desequipar', [UserController::class, 'desequipar'])->name("user.desequipar");
 
-
+//Rutas para mostrar el master
+Route::get('/master/{id}', [MasterController::class, 'index'])->name("master.index");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
