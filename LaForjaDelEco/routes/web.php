@@ -41,6 +41,12 @@ Route::patch('/user/{id}/desequipar', [UserController::class, 'desequipar'])->na
 //Rutas para mostrar el master
 Route::get('/master/{id}', [MasterController::class, 'index'])->name("master.index");
 
+//Rutas para eliminar users
+Route::delete('/master/{id}/eliminarUsers/{idUse}', [MasterController::class, 'deleteUser'])->name("user.eliminar");
+
+//Rutas para añadir elementos al inventario del user
+Route::post('/master/{id}/user/{idUse}/guardarItem', [MasterController::class, 'addItem'])->name("Item.add");
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

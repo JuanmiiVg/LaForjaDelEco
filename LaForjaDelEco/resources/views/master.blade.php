@@ -31,17 +31,25 @@
                 @endif
                 <p>{{ $user->nombrePersonaje }}</p>
                 <div class="botones">
-                    <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <form action="{{route('Item.add',['id' => $master->id, 'idUse' => $user->id])}}" method="post">
+                        @csrf
+                        <button type="submit" class="boton">&nbsp;&nbsp;&nbsp;&nbsp;Dar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </form>
+                    <button class="boton">&nbsp;&nbsp;Quitar&nbsp;&nbsp;</button>
                 </div>
                 <div class="botones">
                     <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <form action="{{route('user.eliminar', ['id' => $master->id, 'idUse' => $user->id])}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="boton">Eliminar</button>
+                    </form>
                 </div>
             </div>
             @endforeach
         </div>
-        
+
     </div>
 </body>
+
 </html>
