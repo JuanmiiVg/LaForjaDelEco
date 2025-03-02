@@ -33,7 +33,7 @@
 
         <div id="arma" class="formulario">
             <h2>Formulario para Arma</h2>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Arma.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Arma -->
                 <label for="nombre">Nombre del Arma:</label>
@@ -41,7 +41,7 @@
                 <label for="categoria">Categoria de Arma:</label>
                 <input type="text" id="categoria" name="categoria"><br>
                 <label for="tamano">Agarre</label>
-                <input type="radio" name="tamano" id="tamano" value="1">A una mano 
+                <input type="radio" name="tamano" id="tamano" value="1">A una mano
                 <input type="radio" name="tamano" id="tamano" value="2">A dos manos<br>
                 <label for="dano">Daño:</label>
                 <input type="number" id="dano" name="dano"><br>
@@ -49,13 +49,13 @@
                 <input type="number" id="peso" name="peso"><br>
                 <label for="imagen">Imagen del Arma:</label>
                 <input type="file" id="imagen" name="imagen"><br>
-                <button type="submit">Enviar</button>
+                <button type="submit">&nbsp;&nbsp;&nbsp;&nbsp;Enviar&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </form>
         </div>
 
         <div id="pocion" class="formulario">
             <h2>Formulario para Poción</h2>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Pocion.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Poción -->
                 <label for="nombrePocion">Nombre de la Poción:</label>
@@ -68,13 +68,13 @@
                 <input type="number" id="peso" name="peso"><br>
                 <label for="imagen">Imagen de la Poción</label>
                 <input type="file" id="imagen" name="imagen"><br>
-                <button type="submit">Enviar</button>
+                <button type="submit">&nbsp;&nbsp;&nbsp;&nbsp;Enviar&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </form>
         </div>
 
         <div id="ingrediente" class="formulario">
             <h2>Formulario para Ingrediente</h2>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Material.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Ingrediente -->
                 <label for="nombreIngrediente">Nombre del Ingrediente:</label>
@@ -83,13 +83,13 @@
                 <input type="number" id="peso" name="peso"><br>
                 <label for="imagen">Imagen del Ingrediente:</label>
                 <input type="file" id="imagen" name="imagen"><br>
-                <button type="submit">Enviar</button>
+                <button type="submit">&nbsp;&nbsp;&nbsp;&nbsp;Enviar&nbsp;&nbsp;&nbsp;&nbsp;</button>
             </form>
         </div>
 
         <div id="material" class="formulario">
             <h2>Formulario para Material</h2>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Ingrediente.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Material -->
                 <label for="nombre">Nombre del Material:</label>
@@ -98,8 +98,8 @@
                 <input type="text" id="peso" name="peso"><br>
                 <label for="imagen">Imagen del Material:</label>
                 <input type="file" id="imagen" name="imagen"><br>
-                <button type="submit">Enviar</button>
-                <!-- Agrega más campos según sea necesario -->
+                <button type="submit">&nbsp;&nbsp;&nbsp;&nbsp;Enviar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+
             </form>
         </div>
     </div>

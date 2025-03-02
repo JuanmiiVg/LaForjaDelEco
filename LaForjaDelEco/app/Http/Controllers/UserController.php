@@ -123,4 +123,22 @@ class UserController extends Controller
 
         return redirect()->route('user.index', ['id' => $id]);
     }
+    public function equiparPocion($id, $idPoc)
+    {
+        $user = User::find($id);
+        $pocion = Pocion::find($idPoc);
+        if ($user && $pocion) {
+            if (is_null($user->Mizquierda) && $user->Mderecha !== $pocion->imagen) {
+                $user->Mizquierda = $pocion->imagen;
+            } elseif (is_null($user->Mderecha) && $user->Mizquierda !== $pocion->imagen) {
+                $user->Mderecha = $pocion->imagen;
+            } else {
+                // Ambas manos ocupadas o la misma poción ya está equipada en la otra mano
+                return redirect()->route('user.index', ['id' => $id])->with('error', 'No se puede equipar la misma poción en ambas manos.');
+            }
+            $user->save();
+        }
+
+        return redirect()->route('user.index', ['id' => $id]);
+    }
 }

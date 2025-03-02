@@ -22,9 +22,37 @@ class MasterController extends Controller
     }
     public function addItem($id, $idUse)
     {
-        $User = User::findOrFail($idUse);
+        $user = User::findOrFail($idUse);
         $master = master::findOrFail($id);
-        return view("anadir", compact("User", "master"));
+        return view("anadir", compact("user", "master"));
+    }
+
+    public function addArma(Request $request, $idUse)
+    {
+        $user = User::findOrFail($idUse);
+        $user->armas()->create($request->all());
+        return redirect()->route("user.index", $idUse);
+    }
+
+    public function addPocion(Request $request, $idUse)
+    {
+        $user = User::findOrFail($idUse);
+        $user->pociones()->create($request->all());
+        return redirect()->route("user.index", $idUse);
+    }
+
+    public function addMaterial(Request $request, $idUse)
+    {
+        $user = User::findOrFail($idUse);
+        $user->materiales()->create($request->all());
+        return redirect()->route("user.index", $idUse);
+    }
+
+    public function addIngrediente(Request $request, $idUse)
+    {
+        $user = User::findOrFail($idUse);
+        $user->ingredientes()->create($request->all());
+        return redirect()->route("user.index", $idUse);
     }
     
 }
