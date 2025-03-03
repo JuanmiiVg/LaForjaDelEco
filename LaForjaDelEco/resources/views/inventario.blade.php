@@ -22,23 +22,23 @@
 
             <div class="equipamiento">
                 @if($user->Mizquierda == $user->Mderecha)
-                    @if($user->Mizquierda)
-                        <div class="mano"><img height="100" src="{{ asset('storage/' . $user->Mizquierda) }}" alt="arma"></div>
-                    @else
-                        <div class="mano"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="arma"></div>
-                        <div class="mano"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="arma"></div>
-                    @endif
+                @if($user->Mizquierda)
+                <div class="mano"><img height="100" src="{{ asset('storage/' . $user->Mizquierda) }}" alt="arma"></div>
                 @else
-                    @if($user->Mizquierda)
-                        <div class="manoI"><img height="100" src="{{ asset('storage/' . $user->Mizquierda) }}" alt="armaI"></div>
-                    @else
-                        <div class="manoI"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaI"></div>
-                    @endif
-                    @if($user->Mderecha)
-                        <div class="manoD"><img height="100" src="{{ asset('storage/' . $user->Mderecha) }}" alt="armaD"></div>
-                    @else
-                        <div class="manoD"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaD"></div>
-                    @endif
+                <div class="mano"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="arma"></div>
+                <div class="mano"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="arma"></div>
+                @endif
+                @else
+                @if($user->Mizquierda)
+                <div class="manoI"><img height="100" src="{{ asset('storage/' . $user->Mizquierda) }}" alt="armaI"></div>
+                @else
+                <div class="manoI"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaI"></div>
+                @endif
+                @if($user->Mderecha)
+                <div class="manoD"><img height="100" src="{{ asset('storage/' . $user->Mderecha) }}" alt="armaD"></div>
+                @else
+                <div class="manoD"><img height="100" src="{{ asset('Img/b48c832f947620b247d01d8e87db2afa-removebg-preview.png') }}" alt="armaD"></div>
+                @endif
                 @endif
             </div>
 
@@ -97,15 +97,20 @@
             @endforeach
             @foreach($pociones as $pocion)
             <div class="cuadrado">
-                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <img class="item" src="{{ asset('storage/' . $pocion->imagen) }}" alt="Imagen no establecida">
                 <p>{{$pocion -> nombre}}</p>
+                <a class="boton">&nbsp;Detalles&nbsp;</a>
                 <div class="botones">
                     <form action="{{ route('pocion.eliminar', ['id' => $user->id, 'idPoc' => $pocion->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
                     </form>
-                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                    <form action="{{route('pocion.equipar',['id' => $user-> id, 'idPoc' => $pocion->id])}}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Equipar&nbsp;&nbsp;&nbsp;</button>
+                    </form>
                 </div>
             </div>
             @endforeach

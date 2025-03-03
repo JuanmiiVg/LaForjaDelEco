@@ -48,10 +48,10 @@ Route::delete('/master/{id}/eliminarUsers/{idUse}', [MasterController::class, 'd
 Route::post('/master/{id}/user/{idUse}/guardarItem', [MasterController::class, 'addItem'])->name("Item.add");
 
 //Rutas para guardar los elementos en el inventario del user
-Route::post('/user/{idUse}/guardarArma', [MasterController::class, 'addArma'])->name("Arma.add");
-Route::post('/user/{idUse}/guardarPocion', [MasterController::class, 'addPocion'])->name("Pocion.add");
-Route::post('/user/{idUse}/guardarMaterial', [MasterController::class, 'addMaterial'])->name("Material.add");
-Route::post('/user/{idUse}/guardarIngrediente', [MasterController::class, 'addIngrediente'])->name("Ingrediente.add");
+Route::post('/master/{id}/user/{idUse}/guardarArma', [MasterController::class, 'addArma'])->name("Arma.add");
+Route::post('/master/{id}/user/{idUse}/guardarPocion', [MasterController::class, 'addPocion'])->name("Pocion.add");
+Route::post('/master/{id}/user/{idUse}/guardarMaterial', [MasterController::class, 'addMaterial'])->name("Material.add");
+Route::post('/master/{id}/user/{idUse}/guardarIngrediente', [MasterController::class, 'addIngrediente'])->name("Ingrediente.add");
 
 
 Route::get('/dashboard', function () {

@@ -33,7 +33,8 @@
 
         <div id="arma" class="formulario">
             <h2>Formulario para Arma</h2>
-            <form method="POST" action="{{route('Arma.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Arma.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
+    
                 @csrf
                 <!-- Campos específicos para Arma -->
                 <label for="nombre">Nombre del Arma:</label>
@@ -55,7 +56,7 @@
 
         <div id="pocion" class="formulario">
             <h2>Formulario para Poción</h2>
-            <form method="POST" action="{{route('Pocion.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Pocion.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Poción -->
                 <label for="nombrePocion">Nombre de la Poción:</label>
@@ -74,7 +75,7 @@
 
         <div id="ingrediente" class="formulario">
             <h2>Formulario para Ingrediente</h2>
-            <form method="POST" action="{{route('Material.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Ingrediente.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Ingrediente -->
                 <label for="nombreIngrediente">Nombre del Ingrediente:</label>
@@ -89,7 +90,7 @@
 
         <div id="material" class="formulario">
             <h2>Formulario para Material</h2>
-            <form method="POST" action="{{route('Ingrediente.add',['idUse' => $user -> id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Material.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Material -->
                 <label for="nombre">Nombre del Material:</label>
@@ -99,7 +100,6 @@
                 <label for="imagen">Imagen del Material:</label>
                 <input type="file" id="imagen" name="imagen"><br>
                 <button type="submit">&nbsp;&nbsp;&nbsp;&nbsp;Enviar&nbsp;&nbsp;&nbsp;&nbsp;</button>
-
             </form>
         </div>
     </div>
