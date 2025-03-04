@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasterController;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,9 +15,16 @@ Route::get('/', function () {
 //Socialite
 //use Laravel\Socialite\Facades\Socialite;
 
-Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
-
-Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
+Route::get('/auth/github/redirect', function () {
+    return Socialite::driver('github')->redirect();
+});
+ 
+Route::get('/auth/github/callback', function () {
+    $user = Socialite::driver('github')->user();
+   
+ 
+    // $user->token
+});
 
 // Ruta que muestra el inventario del personaje
 Route::get("/user/{id}", [UserController::class, "index"])->name("user.index");
