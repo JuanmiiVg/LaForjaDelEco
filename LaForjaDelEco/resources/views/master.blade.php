@@ -35,10 +35,13 @@
                         @csrf
                         <button type="submit" class="boton">&nbsp;&nbsp;&nbsp;&nbsp;Dar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </form>
-                    <button class="boton">&nbsp;&nbsp;Quitar&nbsp;&nbsp;</button>
+                    <form action="{{route('master.quitar',['id' => $master->id, 'idUse' => $user->id])}}" method="post">
+                        @csrf
+                        <button type="submit" class="boton">&nbsp;&nbsp;&nbsp;Quitar&nbsp;&nbsp;&nbsp;</button>
+                    </form>
                 </div>
                 <div class="botones">
-                    <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;</button>
                     <form action="{{route('user.eliminar', ['id' => $master->id, 'idUse' => $user->id])}}" method="post">
                         @csrf
                         @method('DELETE')

@@ -53,6 +53,11 @@ Route::post('/master/{id}/user/{idUse}/guardarPocion', [MasterController::class,
 Route::post('/master/{id}/user/{idUse}/guardarMaterial', [MasterController::class, 'addMaterial'])->name("Material.add");
 Route::post('/master/{id}/user/{idUse}/guardarIngrediente', [MasterController::class, 'addIngrediente'])->name("Ingrediente.add");
 
+//Rutas para quitar elementos del inventario del user
+Route::post('/master/{id}/user/{idUse}/quitar',[MasterController::class,'quitar'])->name("master.quitar");
+
+Route::delete('/master/{id}/eliminarObjeto',[MasterController::class,'eliminar'])->name("master.eliminar");
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

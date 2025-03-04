@@ -14,6 +14,7 @@ use App\Models\Arma;
 use App\Models\Pocion;
 use App\Models\Ingrediente;
 use App\Models\Material;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -43,6 +44,11 @@ class UserController extends Controller
     {
         $arma = Arma::find($idArm);
         if ($arma) {
+            // Eliminar la imagen del arma
+            Storage::delete('public/armas/' . $arma->imagen);
+            // Eliminar la carpeta del arma
+            Storage::deleteDirectory('public/armas/' . $arma->id);
+
             Inventario_Has_Arma::where('arma_id', $idArm)->delete();
             $arma->delete();
         }
@@ -53,6 +59,11 @@ class UserController extends Controller
     {
         $pocion = Pocion::find($idPoc);
         if ($pocion) {
+            // Eliminar la imagen de la poción
+            Storage::delete('public/pociones/' . $pocion->imagen);
+            // Eliminar la carpeta de la poción
+            Storage::deleteDirectory('public/pociones/' . $pocion->id);
+
             Inventario_Has_Pocion::where('pocion_id', $idPoc)->delete();
             $pocion->delete();
         }
@@ -64,6 +75,11 @@ class UserController extends Controller
     {
         $material = Material::find($idMat);
         if ($material) {
+            // Eliminar la imagen del material
+            Storage::delete('public/materiales/' . $material->imagen);
+            // Eliminar la carpeta del material
+            Storage::deleteDirectory('public/materiales/' . $material->id);
+
             Inventario_Has_Material::where('material_id', $idMat)->delete();
             $material->delete();
         }
@@ -75,6 +91,11 @@ class UserController extends Controller
     {
         $ingrediente = Ingrediente::find($idIng);
         if ($ingrediente) {
+            // Eliminar la imagen del ingrediente
+            Storage::delete('public/ingredientes/' . $ingrediente->imagen);
+            // Eliminar la carpeta del ingrediente
+            Storage::deleteDirectory('public/ingredientes/' . $ingrediente->id);
+
             Inventario_Has_Ingrediente::where('ingrediente_id', $idIng)->delete();
             $ingrediente->delete();
         }

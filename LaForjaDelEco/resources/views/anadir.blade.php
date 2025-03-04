@@ -23,6 +23,7 @@
 
 <body>
     <div class="paginaForms">
+        <h4>Que quieres añadir a {{ $user->nombrePersonaje }}</h4>
         <select id="tipo" onchange="mostrarFormulario()">
             <option value="">Seleccione una opción</option>
             <option value="arma">Arma</option>
@@ -33,7 +34,7 @@
 
         <div id="arma" class="formulario">
             <h2>Formulario para Arma</h2>
-            <form method="POST" action="{{route('Arma.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Arma.add',['id' => $master->id, 'idUse' => $user -> id])}}" enctype="multipart/form-data">
     
                 @csrf
                 <!-- Campos específicos para Arma -->
@@ -56,7 +57,7 @@
 
         <div id="pocion" class="formulario">
             <h2>Formulario para Poción</h2>
-            <form method="POST" action="{{route('Pocion.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Pocion.add',['id' => $master->id, 'idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Poción -->
                 <label for="nombrePocion">Nombre de la Poción:</label>
@@ -75,7 +76,7 @@
 
         <div id="ingrediente" class="formulario">
             <h2>Formulario para Ingrediente</h2>
-            <form method="POST" action="{{route('Ingrediente.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Ingrediente.add',['id' => $master->id, 'idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Ingrediente -->
                 <label for="nombreIngrediente">Nombre del Ingrediente:</label>
@@ -90,7 +91,7 @@
 
         <div id="material" class="formulario">
             <h2>Formulario para Material</h2>
-            <form method="POST" action="{{route('Material.add',['idUse' => $user -> id, 'id' => $master->id])}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('Material.add',['id' => $master->id, 'idUse' => $user -> id])}}" enctype="multipart/form-data">
                 @csrf
                 <!-- Campos específicos para Material -->
                 <label for="nombre">Nombre del Material:</label>
