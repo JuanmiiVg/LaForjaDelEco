@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,11 +40,14 @@
                     </form>
                 </div>
                 <div class="botones">
-                    <button class="boton">&nbsp;&nbsp;&nbsp;&nbsp;Editar&nbsp;&nbsp;&nbsp;</button>
+                    <form action="{{route('master.edit',['id' => $master->id, 'idUse' => $user->id])}}" method="get">
+                        @csrf
+                        <button type="submit" class="boton">&nbsp;&nbsp;Editar&nbsp;&nbsp;</button>
+                    </form>
                     <form action="{{route('user.eliminar', ['id' => $master->id, 'idUse' => $user->id])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="boton">Eliminar</button>
+                        <button type="submit" class="boton">&nbsp;Eliminar&nbsp;</button>
                     </form>
                 </div>
             </div>

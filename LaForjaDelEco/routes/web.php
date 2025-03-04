@@ -55,8 +55,11 @@ Route::post('/master/{id}/user/{idUse}/guardarIngrediente', [MasterController::c
 
 //Rutas para quitar elementos del inventario del user
 Route::post('/master/{id}/user/{idUse}/quitar',[MasterController::class,'quitar'])->name("master.quitar");
-
 Route::delete('/master/{id}/eliminarObjeto',[MasterController::class,'eliminar'])->name("master.eliminar");
+
+//Rutas para editar las caracteristicas del user
+Route::get('/master/{id}/user/{idUse}/editar', [MasterController::class, 'editarUser'])->name("master.edit");
+Route::patch('/master/{id}/user/{idUse}/update', [MasterController::class, 'updateUser'])->name("master.update");
 
 
 Route::get('/dashboard', function () {

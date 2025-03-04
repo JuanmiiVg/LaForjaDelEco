@@ -9,6 +9,7 @@ use App\Models\Arma;
 use App\Models\Pocion;
 use App\Models\Material;
 use App\Models\Ingrediente;
+use App\Models\Caracteristicas;
 use App\Models\Inventario;
 use App\Models\inventario_has_arma;
 use App\Models\inventario_has_ingrediente;
@@ -232,5 +233,27 @@ class MasterController extends Controller
         if (Storage::disk('public')->exists($path)) {
             Storage::disk('public')->delete($path);
         }
+    }
+
+    public function editarUser($id, $idUse)
+    {
+        $user = User::findOrFail($idUse);
+        $master = master::findOrFail($id);
+        $caracteristicas = Caracteristicas::findOrFail($user->caracteristicas_id);
+        return view("caracteristicasEdit", compact("user", "master","caracteristicas"));
+    }
+
+    public function updateUser(Request $request,$id,$idUse)
+    {
+        $user = User::findOrFail($idUse);
+        $caracteristicas = Caracteristicas::findOrFail($user->caracteristicas_id);
+        $caracteristicas->vigor = $request->vigor;
+        $caracteristicas->aguante = $request->aguante;
+        $caracteristicas->fuerza = $request->fuerza;
+        $caracteristicas->destreza = $request->destreza;
+        $caracteristicas->inteligencia = $request->inteligencia;
+        $caracteristicas->arcano = $request->arcano;
+        $caracteristicas->save();
+        return redirect()->route("master.index",$id);
     }
 }
