@@ -1,30 +1,19 @@
 <?php
 
 use App\Http\Controllers\auth\ProviderController;
+use App\Http\Controllers\GithubController;
 use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MasterController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
-//Socialite
-//use Laravel\Socialite\Facades\Socialite;
-
-Route::get('/auth/github/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
- 
-Route::get('/auth/github/callback', function () {
-    $user = Socialite::driver('github')->user();
-   
- 
-    // $user->token
-});
 
 // Ruta que muestra el inventario del personaje
 Route::get("/user/{id}", [UserController::class, "index"])->name("user.index");
@@ -80,4 +69,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('/auth/github', [GithubController::class, 'redirectToGithub'])->name('github.login');
+Route::get('/auth/github/callback', [GithubController::class, 'handleGithubCallback']);
+
 require __DIR__ . '/auth.php';
+
+
