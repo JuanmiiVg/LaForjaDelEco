@@ -49,6 +49,8 @@ class MasterController extends Controller
 
         // Crear la carpeta con el ID del arma
         $carpetaArma = 'imagenes/armas/' . $arma->id;
+        Storage::disk('public')->makeDirectory($carpetaArma);
+
         // Guardar la nueva imagen
         $path = request()->file('imagen')->store($carpetaArma, 'public');
         $arma->imagen = $path;
@@ -88,6 +90,8 @@ class MasterController extends Controller
 
         // Crear la carpeta con el ID de la poción
         $carpetaPocion = 'imagenes/pociones/' . $pocion->id;
+        Storage::disk('public')->makeDirectory($carpetaPocion);
+
         // Guardar la nueva imagen
         $path = request()->file('imagen')->store($carpetaPocion, 'public');
         $pocion->imagen = $path;
@@ -119,6 +123,8 @@ class MasterController extends Controller
 
         // Crear la carpeta con el ID del material
         $carpetaMaterial = 'imagenes/materiales/' . $material->id;
+        Storage::disk('public')->makeDirectory($carpetaMaterial);
+
         // Guardar la nueva imagen
         $path = request()->file('imagen')->store($carpetaMaterial, 'public');
         $material->imagen = $path;
@@ -150,6 +156,8 @@ class MasterController extends Controller
 
         // Crear la carpeta con el ID del ingrediente
         $carpetaIngrediente = 'imagenes/ingredientes/' . $ingrediente->id;
+        Storage::disk('public')->makeDirectory($carpetaIngrediente);
+
         // Guardar la nueva imagen
         $path = request()->file('imagen')->store($carpetaIngrediente, 'public');
         $ingrediente->imagen = $path;

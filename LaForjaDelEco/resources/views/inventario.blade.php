@@ -116,7 +116,7 @@
             @endforeach
             @foreach($materiales as $material)
             <div class="cuadrado">
-                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <img class="item" src="{{ asset('storage/' . $material->imagen) }}" alt="Imagen no establecida">
                 <p>{{$material -> nombre}}</p>
                 <div class="botones">
                     <form action="{{ route('material.eliminar', ['id' => $user->id, 'idMat' => $material->id]) }}" method="POST">
@@ -130,7 +130,7 @@
             @endforeach
             @foreach($ingredientes as $ingrediente)
             <div class="cuadrado">
-                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <img class="item" src="{{ asset('storage/' . $ingrediente->imagen) }}" alt="Imagen no establecida">
                 <p>{{$ingrediente -> nombre}}</p>
                 <div class="botones">
                     <form action="{{ route('ingrediente.eliminar', ['id' => $user->id, 'idIng' => $ingrediente->id]) }}" method="POST">
