@@ -51,8 +51,8 @@ Route::post('/master/{id}/user/{idUse}/guardarMaterial', [MasterController::clas
 Route::post('/master/{id}/user/{idUse}/guardarIngrediente', [MasterController::class, 'addIngrediente'])->name("Ingrediente.add");
 
 //Rutas para quitar elementos del inventario del user
-Route::post('/master/{id}/user/{idUse}/quitar',[MasterController::class,'quitar'])->name("master.quitar");
-Route::delete('/master/{id}/eliminarObjeto',[MasterController::class,'eliminar'])->name("master.eliminar");
+Route::post('/master/{id}/user/{idUse}/quitar', [MasterController::class, 'quitar'])->name("master.quitar");
+Route::delete('/master/{id}/eliminarObjeto', [MasterController::class, 'eliminar'])->name("master.eliminar");
 
 //Rutas para editar las caracteristicas del user
 Route::get('/master/{id}/user/{idUse}/editar', [MasterController::class, 'editarUser'])->name("master.edit");
@@ -74,5 +74,3 @@ Route::get('/auth/github', [GithubController::class, 'redirectToGithub'])->name(
 Route::get('/auth/github/callback', [GithubController::class, 'handleGithubCallback']);
 
 require __DIR__ . '/auth.php';
-
-

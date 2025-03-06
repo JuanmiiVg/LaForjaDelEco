@@ -23,7 +23,7 @@
 
     <!-- Formulario Usuario -->
     <div id="usuario" class="formulario" style="display: none;">
-        <form method="POST" action="{{ route('loginU') }}">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <!-- Email -->
@@ -68,16 +68,18 @@
     <!-- Formulario Master -->
     <div id="master" class="formulario" style="display: none;">
 
-        <form method="POST" action="{{ route('loginU') }}">
+        <form method="POST" action="{{ route('loginM') }}">
             @csrf
             <div>
-                <x-input-label for="email_master" :value="__('Email')" />
-                <x-text-input id="email_master" class="block mt-1 w-full" type="email" name="email" required autofocus />
+                <x-input-label for="email" :value="__('Email')" />
+                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <div class="mt-4">
-                <x-input-label for="password_master" :value="__('Password')" />
-                <x-text-input id="password_master" class="block mt-1 w-full" type="password" name="password" required />
+                <x-input-label for="password" :value="__('Password')" />
+                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
             <x-primary-button class="mt-4">

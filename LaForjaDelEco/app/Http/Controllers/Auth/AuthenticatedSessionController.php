@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Master;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -25,7 +27,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-    
+
 
         // Authenticate the user
         $request->authenticate();
@@ -48,6 +50,24 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('login')->withErrors(['email' => 'User not found']);
         }
     }
+
+
+    public function storeMaster(LoginRequest $request)
+    {
+        // Get the master by email
+        $master = Master::where('email', $request->input('email'))->first();
+
+        // Check if master exists and if the password is correct
+        if ($master && Hash::check($request->input('password'), $master->password)) {
+            $masterId = $master->id;
+            // Redirect to master.index with master ID
+            return redirect()->route('master.index', ['id' => $masterId]);
+        } else {
+            // Handle the case where the master is not found or password is incorrect
+            return redirect()->route('login')->withErrors(['email' => 'User not found or password incorrect']);
+        }
+    }
+
 
     /**
      * Destroy an authenticated session.
