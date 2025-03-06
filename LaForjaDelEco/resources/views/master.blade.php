@@ -17,7 +17,7 @@
                 <img src="{{ asset('Img/9ceb07252b117d785feb84c1c3d589b7-removebg-preview.png') }}" height="250" alt="Imagen por Defecto"><br>
                 @endif
                 <label for="perfil">{{ $master->nombreMaster }}</label>
-                <p>Codigo de Master: {{$master->id}}</p>
+                <p>Codigo de Patida: {{$master->codigo}}</p>
             </div>
         </div>
         <div class="derecha">
