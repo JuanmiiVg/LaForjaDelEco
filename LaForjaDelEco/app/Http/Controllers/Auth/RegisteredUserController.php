@@ -71,6 +71,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        
         $master = Master::create([
             'codigo' => $this->generateUniqueCodeId(),
             'nombreMaster' => $request->nombreMaster,
