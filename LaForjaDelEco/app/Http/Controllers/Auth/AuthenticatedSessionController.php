@@ -27,8 +27,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-
-
         // Authenticate the user
         $request->authenticate();
 
@@ -41,7 +39,6 @@ class AuthenticatedSessionController extends Controller
         // Check if user exists and get the ID
         if ($user) {
             $userId = $user->id;
-
 
             // Redirect to user.index with user ID
             return redirect()->route('user.index', ['id' => $userId]);

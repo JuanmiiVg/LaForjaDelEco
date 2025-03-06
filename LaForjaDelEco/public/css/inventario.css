@@ -180,6 +180,23 @@ body {
     color: black;
     background-color: transparent;
 }
+.botonL{
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: url("../Img/descarga__5_-removebg-preview.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    color: black;
+    background-color: transparent;
+}
 
 .botonC {
     display: inline-block;
