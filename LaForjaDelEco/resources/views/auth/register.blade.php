@@ -48,7 +48,7 @@
 
         select,
         input,
-        button {
+        .boton-general {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -59,7 +59,7 @@
             background: rgba(255, 239, 191, 0.8);
         }
 
-        button {
+        .boton-general {
             background: #8B0000;
             color: gold;
             font-size: 18px;
@@ -69,13 +69,32 @@
             border: 3px solid gold;
         }
 
-        button:hover {
+        .boton-general:hover {
             background: #A52A2A;
         }
 
         .formulario {
             display: none;
             width: 100%;
+        }
+
+        .bVolver {
+            position: fixed;
+            top: 0;
+            right: 0;
+            display: inline-block;
+            padding: 10px 20px;
+            background-image: url("../Img/descarga__5_-removebg-preview.png");
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            color: black;
+            background-color: transparent;
+            font-family: 'Uncial Antiqua', cursive;
         }
     </style>
     <script>
@@ -94,6 +113,10 @@
 
 <body>
     <div class="contenedor-formulario">
+        <form action="{{ route('welcome') }}" method="get">
+            @csrf
+            <button class="bVolver" type="submit">volver</button>
+        </form>
         <div class="form-card">
             <h2>Selecciona tu tipo de cuenta</h2>
 
@@ -114,7 +137,7 @@
                     <input type="text" name="codigo" placeholder="Código de Partida" required>
                     <input type="password" name="password" placeholder="Contraseña" required>
                     <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" required>
-                    <button type="submit">REGISTRARSE</button>
+                    <button class="boton-general" type="submit">REGISTRARSE</button>
                 </form>
             </div>
 
@@ -125,7 +148,7 @@
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="password" placeholder="Contraseña" required>
                     <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" required>
-                    <button type="submit">REGISTRARSE</button>
+                    <button class="boton-general" type="submit">REGISTRARSE</button>
                 </form>
             </div>
         </div>
