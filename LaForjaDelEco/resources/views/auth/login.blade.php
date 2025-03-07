@@ -1,3 +1,68 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
+    /* Estilo general del contenedor */
+    .contenedor-formulario {
+        background-image: url("{{ asset('img/medieval-castle-bridge-8taa2c6wt.jpg') }}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Tarjeta del formulario con efecto medieval */
+    .form-card {
+        background: rgba(255, 239, 191, 0.9);
+        border-radius: 15px;
+        padding: 30px;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        font-family: 'Uncial Antiqua', cursive;
+        border: 4px solid #8B4513;
+    }
+
+    select,
+    input,
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 2px solid #8B4513;
+        font-size: 16px;
+        font-family: 'Uncial Antiqua', cursive;
+        background: rgba(255, 239, 191, 0.8);
+    }
+
+    button {
+        background: #8B0000;
+        color: gold;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        font-weight: bold;
+        border: 3px solid gold;
+    }
+
+    button:hover {
+        background: #A52A2A;
+    }
+
+    .github-btn {
+        background: #333;
+        color: white;
+        border: 3px solid gold;
+    }
+</style>
+
 <script>
     function mostrarFormulario() {
         var seleccion = document.getElementById("tipo").value;
@@ -12,79 +77,34 @@
 </script>
 
 <x-guest-layout>
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="contenedor-formulario">
+        <div class="form-card">
+            <h2>Selecciona tu tipo de cuenta</h2>
+            <select id="tipo" onchange="mostrarFormulario()">
+                <option value="">Seleccione una opción</option>
+                <option value="usuario">Usuario</option>
+                <option value="master">Master</option>
+            </select>
 
-    <!-- Selector de tipo de usuario -->
-    <select id="tipo" onchange="mostrarFormulario()">
-        <option value="">Seleccione una opción</option>
-        <option value="usuario">Usuario</option>
-        <option value="master">Master</option>
-    </select>
-
-    <!-- Formulario Usuario -->
-    <div id="usuario" class="formulario" style="display: none;">
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email -->
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <div id="usuario" class="formulario" style="display: none;">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+                <a href="{{ route('github.login') }}" class="github-btn">Iniciar sesión con GitHub</a>
             </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <div id="master" class="formulario" style="display: none;">
+                <form method="POST" action="{{ route('loginM') }}">
+                    @csrf
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+                <a href="{{ route('github.login') }}" class="github-btn">Iniciar sesión con GitHub</a>
             </div>
-
-            <!-- Recordarme -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded text-indigo-600" name="remember">
-                    <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-                @endif
-
-                <x-primary-button class="ms-3">
-                    {{ __('Log in') }}
-                </x-primary-button>
-                <a href="{{ route('github.login') }}" class="transition-transform duration-300 hover:scale-110">
-                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" class="w-5 h-5">
-                </a>
-            </div>
-        </form>
-    </div>
-
-    <!-- Formulario Master -->
-    <div id="master" class="formulario" style="display: none;">
-
-        <form method="POST" action="{{ route('loginM') }}">
-            @csrf
-            <div>
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <x-primary-button class="mt-4">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </form>
+        </div>
     </div>
 </x-guest-layout>

@@ -177,7 +177,8 @@ class MasterController extends Controller
         return redirect()->route('master.index', $id);
     }
 
-    public function quitar($id,$idUse){
+    public function quitar($id, $idUse)
+    {
         $user = User::find($idUse);
         $master = Master::find($id);
 
@@ -196,7 +197,6 @@ class MasterController extends Controller
         $materiales = Material::whereIn("id", $materiales_datos->pluck("material_id"))->get();
 
         return view("quitar", compact("user", "master", "pociones", "ingredientes", "armas", "materiales"));
-
     }
 
     public function eliminar(Request $request, $id)
@@ -248,10 +248,10 @@ class MasterController extends Controller
         $user = User::findOrFail($idUse);
         $master = master::findOrFail($id);
         $caracteristicas = Caracteristicas::findOrFail($user->caracteristicas_id);
-        return view("caracteristicasEdit", compact("user", "master","caracteristicas"));
+        return view("caracteristicasEdit", compact("user", "master", "caracteristicas"));
     }
 
-    public function updateUser(Request $request,$id,$idUse)
+    public function updateUser(Request $request, $id, $idUse)
     {
         $user = User::findOrFail($idUse);
         $caracteristicas = Caracteristicas::findOrFail($user->caracteristicas_id);
@@ -262,6 +262,6 @@ class MasterController extends Controller
         $caracteristicas->inteligencia = $request->inteligencia;
         $caracteristicas->arcano = $request->arcano;
         $caracteristicas->save();
-        return redirect()->route("master.index",$id);
+        return redirect()->route("master.index", $id);
     }
 }
