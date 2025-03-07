@@ -25,7 +25,7 @@
                 @method('patch')
                 @if(is_null($caracteristicas->vigor))
                 <h1>ASIGNA TUS CARACTERISTICAS</h1>
-                <H3>(No pueden sumar mas de 125 )</H3>
+                <H3>(No pueden sumar más de 125 )</H3>
                 <span id="totalValue">0</span>
                 <div class="rangeContainer">
                     <label for="vigor">Vigor</label>
