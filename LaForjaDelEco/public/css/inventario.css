@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
 html,
 body {
+
+    font-family: 'Uncial Antiqua', cursive;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -32,14 +36,17 @@ body {
     background-color: transparent !important;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25px; /* Corrige el margen */
+    margin-bottom: 25px;
+    /* Corrige el margen */
 
-    padding: 10px; /* Añade padding para espaciar los elementos */
+    padding: 10px;
+    /* Añade padding para espaciar los elementos */
 }
 
 .manoI {
     margin-left: 50px;
 }
+
 .manoD {
     margin-right: 50px;
 }
@@ -53,13 +60,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px double grey; /* Asegúrate de que el borde sea visible */
-    margin: 10px; /* Añade margen para espaciar los elementos */
+    border: 2px double grey;
+    /* Asegúrate de que el borde sea visible */
+    margin: 10px;
+    /* Añade margen para espaciar los elementos */
 }
 
 .perfil {
     margin-top: 75px;
 }
+
 .mano img,
 .manoI img,
 .manoD img {
@@ -110,6 +120,7 @@ body {
     display: flex;
     justify-content: space-around;
     width: 85%;
+
 }
 
 #caracteristicas {
@@ -137,8 +148,7 @@ body {
     appearance: none;
     width: 30px;
     height: 30px;
-    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
-        no-repeat center;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png") no-repeat center;
     background-size: cover;
     cursor: pointer;
     margin-top: -11px;
@@ -154,8 +164,7 @@ body {
 #caracteristicas input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 30px;
-    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
-        no-repeat center;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png") no-repeat center;
     background-size: cover;
     cursor: pointer;
 }
@@ -179,6 +188,26 @@ body {
     border: none;
     color: black;
     background-color: transparent;
+    font-family: 'Uncial Antiqua', cursive;
+}
+
+.botonL {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: url("../Img/descarga__5_-removebg-preview.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    color: black;
+    background-color: transparent;
+    font-family: 'Uncial Antiqua', cursive;
 }
 
 .botonC {
@@ -197,6 +226,7 @@ body {
     background-color: transparent;
     height: 100px;
     width: 100px;
+    font-family: 'Uncial Antiqua', cursive;
 }
 
 .boton:hover {
@@ -242,8 +272,7 @@ body {
     appearance: none;
     width: 30px;
     height: 30px;
-    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
-        no-repeat center;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png") no-repeat center;
     background-size: cover;
     cursor: pointer;
     margin-top: -11px;
@@ -259,8 +288,7 @@ body {
 #caracteristicasEdit input[type="range"]::-moz-range-thumb {
     width: 30px;
     height: 30px;
-    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png")
-        no-repeat center;
+    background: url("../Img/middle-ages-custom-cursor-removebg-preview.png") no-repeat center;
     background-size: cover;
     cursor: pointer;
 }
@@ -269,6 +297,7 @@ body {
     color: transparent;
     text-shadow: none;
 }
+
 .pagina {
     height: 100vh;
     width: 100vw;

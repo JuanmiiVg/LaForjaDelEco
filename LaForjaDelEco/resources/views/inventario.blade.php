@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inventario del User</title>
     <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
 </head>
 
 <body>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button class="botonL" type="submit">Cerrar Sesión</button>
+    </form>
+
     <div class="grid-container">
         <div class="izquierda">
             <div class="perfil">

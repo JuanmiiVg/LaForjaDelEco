@@ -1,120 +1,158 @@
-<script>
-    function mostrarFormulario() {
-        var seleccion = document.getElementById("tipo").value;
-        var formularios = document.getElementsByClassName("formulario");
-        for (var i = 0; i < formularios.length; i++) {
-            formularios[i].style.display = "none";
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Uncial Antiqua', cursive;
+            margin: 0;
+            padding: 0;
         }
-        if (seleccion) {
-            document.getElementById(seleccion).style.display = "block";
+
+        .contenedor-formulario {
+            background-image: url("{{ asset('img/medieval-castle-bridge-8taa2c6wt.jpg') }}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-    }
-</script>
 
-<x-guest-layout>
-    <!-- Selector de tipo de usuario -->
-    <div class="mb-6">
-        <select id="tipo" onchange="mostrarFormulario()" class="w-full p-2 border rounded-md">
-            <option value="">Seleccione una opción</option>
-            <option value="usuario">Usuario</option>
-            <option value="master">Master</option>
-        </select>
-    </div>
+        .form-card {
+            background: rgba(255, 239, 191, 0.9);
+            border-radius: 15px;
+            padding: 50px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Uncial Antiqua', cursive;
+            border: 4px solid #8B4513;
+        }
 
-    <!-- Formulario Usuario -->
-    <div id="usuario" class="formulario" style="display: none;">
-        <form method="POST" action="{{ route('register') }}">
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 106%;
+        }
+
+        select,
+        input,
+        .boton-general {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 2px solid #8B4513;
+            font-size: 16px;
+            font-family: 'Uncial Antiqua', cursive;
+            background: rgba(255, 239, 191, 0.8);
+        }
+
+        .boton-general {
+            background: #8B0000;
+            color: gold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: bold;
+            border: 3px solid gold;
+        }
+
+        .boton-general:hover {
+            background: #A52A2A;
+        }
+
+        .formulario {
+            display: none;
+            width: 100%;
+        }
+
+        .bVolver {
+            position: fixed;
+            top: 0;
+            right: 0;
+            display: inline-block;
+            padding: 10px 20px;
+            background-image: url("../Img/descarga__5_-removebg-preview.png");
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            color: black;
+            background-color: transparent;
+            font-family: 'Uncial Antiqua', cursive;
+        }
+    </style>
+    <script>
+        function mostrarFormulario() {
+            var seleccion = document.getElementById("tipo").value;
+            var formularios = document.getElementsByClassName("formulario");
+            for (var i = 0; i < formularios.length; i++) {
+                formularios[i].style.display = "none";
+            }
+            if (seleccion) {
+                document.getElementById(seleccion).style.display = "block";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="contenedor-formulario">
+        <form action="{{ route('welcome') }}" method="get">
             @csrf
-
-            <!-- Nombre de Personaje -->
-            <div class="mb-4">
-                <x-input-label for="nombrePersonaje" :value="__('Nombre de Personaje')" />
-                <x-text-input id="nombrePersonaje" class="block mt-1 w-full" type="text" name="nombrePersonaje" :value="old('nombrePersonaje')" required autofocus autocomplete="nombrePersonaje" />
-                <x-input-error :messages="$errors->get('nombrePersonaje')" class="mt-2" />
-            </div>
-
-            <!-- Email -->
-            <div class="mb-4">
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <!-- Código del Master -->
-            <div class="mb-4">
-                <x-input-label for="codigo" :value="__('Código de Partida')" />
-                <x-text-input id="codigo" class="block mt-1 w-full" type="text" name="codigo" :value="old('codigo')" required autocomplete="codigo" />
-                <x-input-error :messages="$errors->get('master_id')" class="mt-2" />
-            </div>
-
-            <!-- Contraseña -->
-            <div class="mb-4">
-                <x-input-label for="password" :value="__('Contraseña')" />
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirmar Contraseña -->
-            <div class="mb-4">
-                <x-input-label for="password_confirmation" :value="__('Confirmar Contraseña')" />
-                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-between mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('¿Ya tienes un personaje?') }}
-                </a>
-
-                <x-primary-button class="ms-4">
-                    {{ __('REGISTRARSE') }}
-                </x-primary-button>
-            </div>
+            <button class="bVolver" type="submit">volver</button>
         </form>
+        <div class="form-card">
+            <h2>Selecciona tu tipo de cuenta</h2>
+
+            <!-- Contenedor del select para mantener el espaciado uniforme -->
+            <div class="form-container">
+                <select id="tipo" onchange="mostrarFormulario()">
+                    <option value="">Seleccione una opción</option>
+                    <option value="usuario">Usuario</option>
+                    <option value="master">Master</option>
+                </select>
+            </div>
+
+            <div id="usuario" class="formulario form-container">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <input type="text" name="nombrePersonaje" placeholder="Nombre de Personaje" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="codigo" placeholder="Código de Partida" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" required>
+                    <button class="boton-general" type="submit">REGISTRARSE</button>
+                </form>
+            </div>
+
+            <div id="master" class="formulario form-container">
+                <form method="POST" action="{{ route('registerM') }}">
+                    @csrf
+                    <input type="text" name="nombreMaster" placeholder="Nombre del Master" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Contraseña" required>
+                    <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" required>
+                    <button class="boton-general" type="submit">REGISTRARSE</button>
+                </form>
+            </div>
+        </div>
     </div>
+</body>
 
-    <!-- Formulario Master -->
-    <div id="master" class="formulario" style="display: none;">
-        <form method="POST" action="{{ route('registerM') }}">
-            @csrf
-
-            <!-- Nombre del Master -->
-            <div class="mb-4">
-                <x-input-label for="nombreMaster" :value="__('Nombre del Master')" />
-                <x-text-input id="nombreMaster" class="block mt-1 w-full" type="text" name="nombreMaster" :value="old('nombreMaster')" required autofocus autocomplete="nombreMaster" />
-                <x-input-error :messages="$errors->get('nombreMaster')" class="mt-2" />
-            </div>
-
-            <!-- Email -->
-            <div class="mb-4">
-                <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
-
-            <!-- Contraseña -->
-            <div class="mb-4">
-                <x-input-label for="password" :value="__('Contraseña')" />
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirmar Contraseña -->
-            <div class="mb-4">
-                <x-input-label for="password_confirmation" :value="__('Confirmar Contraseña')" />
-                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-between mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('¿Ya tienes una cuenta?') }}
-                </a>
-
-                <x-primary-button class="ms-4">
-                    {{ __('REGISTRARSE') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </div>
-</x-guest-layout>
+</html>
