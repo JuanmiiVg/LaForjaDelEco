@@ -85,7 +85,7 @@
                 <img class="item" src="{{ asset('storage/' . $arma->imagen) }}" alt="Imagen no establecida">
                 <p>{{$arma -> nombre}}</p>
 
-                <a class="boton">&nbsp;Detalles&nbsp;</a>
+                <a class="boton" href="{{ route('arma.show', ['id' => $user->id, 'idArm' => $arma->id]) }}">&nbsp;Detalles&nbsp;</a>
                 <div class="botones">
                     <form action="{{ route('arma.eliminar', ['id' => $user->id, 'idArm' => $arma->id]) }}" method="POST">
                         @csrf
