@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
         /* Fuente medieval */
         body {
             font-family: 'Uncial Antiqua', cursive;
-            color: #D4AF37; /* Dorado medieval */
+            color: #D4AF37;
+            /* Dorado medieval */
         }
 
         /* Background video */
@@ -42,7 +44,7 @@
         .door {
             position: absolute;
             width: 50%;
-            height: 100%;  
+            height: 100%;
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.7);
             transform-origin: center;
             top: 0;
@@ -63,17 +65,32 @@
 
         /* Animación de apertura */
         @keyframes openDoorLeft {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(60deg); }
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(60deg);
+            }
         }
 
         @keyframes openDoorRight {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(-60deg); }
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(-60deg);
+            }
         }
 
-        .open .left { animation: openDoorLeft 1s ease forwards; }
-        .open .right { animation: openDoorRight 1s ease forwards; }
+        .open .left {
+            animation: openDoorLeft 1s ease forwards;
+        }
+
+        .open .right {
+            animation: openDoorRight 1s ease forwards;
+        }
 
         /* Eliminar fondo después de abrirse */
         .open {
@@ -90,16 +107,19 @@
             padding: 20px;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            color: #D4AF37; /* Dorado medieval */
+            color: #D4AF37;
+            /* Dorado medieval */
             z-index: 1;
         }
 
         .content h1 {
-            font-size: 3rem; /* Texto más grande */
+            font-size: 3rem;
+            /* Texto más grande */
         }
 
         .content p {
-            font-size: 1.8rem; /* Texto más grande */
+            font-size: 1.8rem;
+            /* Texto más grande */
         }
 
         .show-content {
@@ -110,12 +130,14 @@
         .boton-general {
             background: #8B0000;
             color: gold;
-            font-size: 1.5rem; /* Botones más grandes */
+            font-size: 1.5rem;
+            /* Botones más grandes */
             cursor: pointer;
             transition: background 0.3s ease;
             font-weight: bold;
             border: 3px solid gold;
-            padding: 15px 30px; /* Botones más grandes */
+            padding: 15px 30px;
+            /* Botones más grandes */
             border-radius: 5px;
             font-family: 'Uncial Antiqua', cursive;
             text-decoration: none;
@@ -128,6 +150,7 @@
         }
     </style>
 </head>
+
 <body>
     <video class="video-background" autoplay muted loop>
         <source src="{{ asset('video/medievalcorridor.webm') }}" type="video/webm">
@@ -135,14 +158,22 @@
 
     <div class="door-container" id="doorContainer">
         <div class="door left"></div>
-        <div class="door right"></div>
+        <div class="door right"></div>z
     </div>
 
     <div class="content" id="content">
         <h1>Bienvenido a la Forja Del Eco</h1>
         <p>Elige tu camino, viajero.</p>
-        <a href="login.html" class="boton-general">Iniciar Sesión</a>
-        <a href="registro.html" class="boton-general">Registrarse</a>
+
+        <form action="{{ route('register') }}" method="get">
+            <button type="submit" class="boton-general">Registrarse</button>
+        </form>
+
+
+
+        <form action="{{ route('login') }}" method="get">
+            <button type="submit" class="boton-general">Iniciar Sesión</button>
+        </form>
     </div>
 
     <!-- Sonidos -->
@@ -163,9 +194,9 @@
 
             // Reproducir sonido de apertura de puertas
             doorSound.play();
-            
+
             doorContainer.classList.add('open');
-            
+
             setTimeout(() => {
                 content.classList.add('show-content');
                 // Iniciar sonido ambiental
@@ -175,4 +206,5 @@
         }, 3000);
     </script>
 </body>
+
 </html>
