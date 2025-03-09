@@ -17,12 +17,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable() ;
+            $table->string('imagen', 500)->nullable();
             $table->string('rubies', 45)->nullable();
             $table->foreignId('caracteristicas_id')->constrained('caracteristicas')->onDelete('cascade');
             $table->foreignId('master_id')->constrained('master')->onDelete('cascade');
             $table->foreignId('inventario_id')->constrained('inventario')->onDelete('cascade')->unique();
-            $table->string('Mderecha', 45)->nullable();
-            $table->string('Mizquierda', 45)->nullable();
+            $table->string('Mderecha', 500)->nullable();
+            $table->string('Mizquierda', 500)->nullable();
             
             $table->rememberToken();
             $table->timestamps();
