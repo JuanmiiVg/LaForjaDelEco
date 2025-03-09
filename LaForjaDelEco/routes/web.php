@@ -10,6 +10,8 @@ use App\Http\Controllers\MasterController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\inventarioControler;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,6 +60,11 @@ Route::delete('/master/{id}/eliminarObjeto', [MasterController::class, 'eliminar
 Route::get('/master/{id}/user/{idUse}/editar', [MasterController::class, 'editarUser'])->name("master.edit");
 Route::patch('/master/{id}/user/{idUse}/update', [MasterController::class, 'updateUser'])->name("master.update");
 
+//Ruta para ver descripcion de los items
+Route::get('/user/{id}/detalleArma/{idArm}', [inventarioControler::class, 'DetalleArma'])->name("arma.show");
+Route::get('/user/{id}/detallePocion/{idPoc}', [inventarioControler::class, 'DetallePocion'])->name("pocion.show");
+Route::get('/user/{id}/detalleMaterial/{idMat}', [inventarioControler::class, 'DetalleMaterial'])->name("material.show");
+Route::get('/user/{id}/detalleIngrediente/{idIng}', [inventarioControler::class, 'DetalleIngrediente'])->name("ingrediente.show");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
