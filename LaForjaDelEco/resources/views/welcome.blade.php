@@ -158,7 +158,7 @@
 
     <div class="door-container" id="doorContainer">
         <div class="door left"></div>
-        <div class="door right"></div>z
+        <div class="door right"></div>
     </div>
 
     <div class="content" id="content">
