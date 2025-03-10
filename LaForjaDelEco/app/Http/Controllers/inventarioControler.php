@@ -15,4 +15,28 @@ class inventarioControler extends Controller
 
         return view('DetalleArma', compact('user', 'arma'));
     }
+
+    public function DetallePocion($id, $idPoc)
+    {
+        $pocion = Pocion::findOrFail($idPoc);
+        $user = User::findOrFail($id);
+
+        return view('DetallePocion', compact('user', 'pocion'));
+    }
+
+    public function DetalleMaterial($id, $idMat)
+    {
+        $material = Pocion::findOrFail($idMat);
+        $user = User::findOrFail($id);
+
+        return view('DetalleMaterial', compact('user', 'material'));
+    }
+
+    public function DetalleIngrediente($id, $idIng)
+    {
+        $material = Pocion::findOrFail($idIng);
+        $user = User::findOrFail($id);
+
+        return view('DetalleIngrediente', compact('user', 'ingrediente'));
+    }
 }

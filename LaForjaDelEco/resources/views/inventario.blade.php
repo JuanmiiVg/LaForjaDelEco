@@ -104,7 +104,7 @@
             <div class="cuadrado">
                 <img class="item" src="{{ asset('storage/' . $pocion->imagen) }}" alt="Imagen no establecida">
                 <p>{{$pocion -> nombre}}</p>
-                <a class="boton">&nbsp;Detalles&nbsp;</a>
+                <a class="boton" href="{{ route('pocion.show', ['id' => $user->id, 'idPoc' => $pocion->id]) }}">&nbsp;Detalles&nbsp;</a>
                 <div class="botones">
                     <form action="{{ route('pocion.eliminar', ['id' => $user->id, 'idPoc' => $pocion->id]) }}" method="POST">
                         @csrf
@@ -123,6 +123,7 @@
             <div class="cuadrado">
                 <img class="item" src="{{ asset('storage/' . $material->imagen) }}" alt="Imagen no establecida">
                 <p>{{$material -> nombre}}</p>
+                <a class="boton" href="{{ route('material.show', ['id' => $user->id, 'idMat' => $material->id]) }}">&nbsp;Detalles&nbsp;</a>
                 <div class="botones">
                     <form action="{{ route('material.eliminar', ['id' => $user->id, 'idMat' => $material->id]) }}" method="POST">
                         @csrf
@@ -137,6 +138,7 @@
             <div class="cuadrado">
                 <img class="item" src="{{ asset('storage/' . $ingrediente->imagen) }}" alt="Imagen no establecida">
                 <p>{{$ingrediente -> nombre}}</p>
+                <a class="boton" href="{{ route('ingrediente.show', ['id' => $user->id, 'idIng' => $ingrediente->id]) }}">&nbsp;Detalles&nbsp;</a>
                 <div class="botones">
                     <form action="{{ route('ingrediente.eliminar', ['id' => $user->id, 'idIng' => $ingrediente->id]) }}" method="POST">
                         @csrf

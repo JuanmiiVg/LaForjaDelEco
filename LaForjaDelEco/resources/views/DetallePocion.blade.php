@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/LaForjaDelEco/public/Img/gato.jpg">
-    <title>Arma Medieval</title>
+    <title>Pocion Medieval</title>
     <style>
         body {
             background-image: url("../Img/f71d736cf5398cc35222f2e9d95518f0.jpg");
@@ -58,16 +58,16 @@
     <div class="container">
         <div class="content">
             <div class="titulo">
-                <h1>{{ $arma->nombre }}</h1>
+                <h1>{{ $pocion->nombre }}</h1>
             </div>
             <div class="info">
-                <p><strong>Categoría:</strong>{{ $arma->categoria }}</p>
-                <p><strong>Tamaño:</strong> {{ $arma->tamaño }}</p>
-                <p><strong>Daño:</strong>{{ $arma->daño }}</p>
-                <p><strong>Peso:</strong>{{ $arma->peso }} kg</p>
+                <p><strong>Duracion:</strong>{{ $pocion->duracion }}</p>
+                <p><strong>Efecto:</strong>  {{ $pocion->efecto }}</p>
+                <p><strong>Tamaño:</strong>{{ $pocion->tamaño }}</p>
+                <p><strong>Peso:</strong>{{ $pocion->peso }} kg</p>
             </div>
             <div class="image">
-                <img src="" alt="Espada Excalibur">
+                <img src="" alt="Pocion">
             </div>
         </div>
     </div>
