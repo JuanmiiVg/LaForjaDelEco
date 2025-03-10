@@ -24,7 +24,7 @@
                 <img src="{{ asset('storage/' . $pocion->imagen) }}" alt="Poción">
             </div>
             <div class="image">
-                <a href="{{ route('user.index', ['id' => $user->id]) }}" class="boton">&nbsp;&nbsp;Volver&nbsp;&nbsp;</a>
+                <a href="{{ route('user.index', ['id' => $user->id]) }}" class="botonF">&nbsp;&nbsp;Volver&nbsp;&nbsp;</a>
             </div>
         </div>
     </div>

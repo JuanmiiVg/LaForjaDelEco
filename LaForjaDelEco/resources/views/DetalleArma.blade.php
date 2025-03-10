@@ -32,8 +32,8 @@
             <div class="image">
                 <img src="{{ asset('storage/' . $arma->imagen) }}" alt="Arma">
             </div>
-            <div class="image">
-            <a href="{{ route('user.index', ['id' => $user->id]) }}" class="boton">&nbsp;&nbsp;Volver&nbsp;&nbsp;</a>
+            <div class="images">
+            <a href="{{ route('user.index', ['id' => $user->id]) }}" class="botonF">&nbsp;&nbsp;Volver&nbsp;&nbsp;</a>
             </div>
             
         </div>

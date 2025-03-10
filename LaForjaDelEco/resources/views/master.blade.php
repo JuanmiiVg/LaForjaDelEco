@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master</title>
+    <title>{{ $master->nombreMaster }}</title>
     <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
     <link
         rel="stylesheet"
@@ -133,7 +133,7 @@
                 <form action="{{ route('master.update', ['id' => $master->id]) }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <input type="file" name="imagen" id="imagen">
-                    <button type="submit" class="boton">Cambiar foto</button>
+                    <button type="submit" class="botonF">Cambiar foto</button>
                 </form>
 
 
@@ -151,22 +151,22 @@
                 <div class="botones">
                     <form action="{{route('Item.add',['id' => $master->id, 'idUse' => $user->id])}}" method="post">
                         @csrf
-                        <button type="submit" class="boton">&nbsp;&nbsp;&nbsp;&nbsp;Dar&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        <button type="submit" class="boton">&nbsp;&nbsp;&nbsp;Dar&nbsp;&nbsp;&nbsp;&nbsp;</button>
                     </form>
                     <form action="{{route('master.quitar',['id' => $master->id, 'idUse' => $user->id])}}" method="post">
                         @csrf
-                        <button type="submit" class="boton">&nbsp;&nbsp;&nbsp;Quitar&nbsp;&nbsp;&nbsp;</button>
+                        <button type="submit" class="boton">&nbsp;Quitar&nbsp;</button>
                     </form>
                 </div>
                 <div class="botones">
                     <form action="{{route('master.edit',['id' => $master->id, 'idUse' => $user->id])}}" method="get">
                         @csrf
-                        <button type="submit" class="boton">&nbsp;&nbsp;Editar&nbsp;&nbsp;</button>
+                        <button type="submit" class="boton">&nbsp;Editar&nbsp;</button>
                     </form>
                     <form action="{{route('user.eliminar', ['id' => $master->id, 'idUse' => $user->id])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="boton">&nbsp;Eliminar&nbsp;</button>
+                        <button type="submit" class="boton">Eliminar</button>
                     </form>
                 </div>
             </div>

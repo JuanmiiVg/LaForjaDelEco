@@ -175,7 +175,7 @@ body {
     justify-items: center;
 }
 
-.boton {
+.botonF {
     display: inline-block;
     padding: 10px 20px;
     background-image: url("../Img/descarga__5_-removebg-preview.png");
@@ -190,6 +190,22 @@ body {
     background-color: transparent;
     font-family: 'Uncial Antiqua', cursive;
     text-decoration: none;
+}
+
+.boton {
+    width: 100%; /* Asegura que el botón ocupe todo el espacio disponible en su celda */
+    padding: 10px 20px;
+    background-image: url("../Img/descarga__5_-removebg-preview.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: none;
+    color: black;
+    background-color: transparent;
+    font-family: 'Uncial Antiqua', cursive;
 }
 
 .botonL {

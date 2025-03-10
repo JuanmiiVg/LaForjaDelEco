@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ $user->nombrePersonaje }}</title>
     <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
 </head>
 
@@ -45,7 +45,7 @@
             <form action="{{ route('user.desequipar', ['id' => $user->id]) }}" method="POST">
                 @csrf
                 @method('PATCH')
-                <button class="boton" type="submit">Desequipar</button>
+                <button class="botonF" type="submit">Desequipar</button>
             </form>
 
             <style>
@@ -80,17 +80,17 @@
                 <img class="item" src="{{ asset('storage/' . $arma->imagen) }}" alt="Imagen no establecida">
                 <p>{{$arma -> nombre}}</p>
 
-                <a class="boton">&nbsp;Detalles&nbsp;</a>
+                <a href="{{ route('arma.show', ['id' => $user->id, 'idArm' => $arma->id] )}}" class="botonF">Detalles</a>
                 <div class="botones">
                     <form action="{{ route('arma.eliminar', ['id' => $user->id, 'idArm' => $arma->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                        <button class="boton" type="submit">Soltar</button>
                     </form>
                     <form action="{{route('arma.equipar',['id' => $user-> id, 'idArm' => $arma->id])}}" method="POST">
                         @csrf
-                        @method('get')
-                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Equipar&nbsp;&nbsp;&nbsp;</button>
+                        @method('PATCH')
+                        <button class="boton" type="submit">Equipar</button>
                     </form>
                 </div>
             </div>
@@ -99,46 +99,48 @@
             <div class="cuadrado">
                 <img class="item" src="{{ asset('storage/' . $pocion->imagen) }}" alt="Imagen no establecida">
                 <p>{{$pocion -> nombre}}</p>
-                <a class="boton">&nbsp;Detalles&nbsp;</a>
+                <a href="{{ route('pocion.show', ['id' => $user->id, 'idPoc' => $pocion->id] )}}" class="botonF">Detalles</a>
                 <div class="botones">
                     <form action="{{ route('pocion.eliminar', ['id' => $user->id, 'idPoc' => $pocion->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                        <button class="boton" type="submit">Soltar</button>
                     </form>
                     <form action="{{route('pocion.equipar',['id' => $user-> id, 'idPoc' => $pocion->id])}}" method="POST">
                         @csrf
                         @method('PATCH')
-                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Equipar&nbsp;&nbsp;&nbsp;</button>
+                        <button class="boton" type="submit">Equipar</button>
                     </form>
                 </div>
             </div>
             @endforeach
             @foreach($materiales as $material)
             <div class="cuadrado">
-                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <img class="item" src="{{ asset('storage/' . $material->imagen) }}" alt="Imagen no establecida">
                 <p>{{$material -> nombre}}</p>
+
                 <div class="botones">
                     <form action="{{ route('material.eliminar', ['id' => $user->id, 'idMat' => $material->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                        <button class="boton" type="submit">Soltar</button>
                     </form>
-                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                    <a href="{{ route('material.show', ['id' => $user->id, 'idMat' => $material->id] )}}" class="boton">Detalles</a>
                 </div>
             </div>
             @endforeach
             @foreach($ingredientes as $ingrediente)
             <div class="cuadrado">
-                <img class="item" src="{{ asset('Img/ca6ce0c083114292bb032634564fa849-removebg-preview.png') }}" alt="">
+                <img class="item" src="{{ asset('storage/' . $ingrediente->imagen) }}" alt="Imagen no establecida">
                 <p>{{$ingrediente -> nombre}}</p>
+
                 <div class="botones">
                     <form action="{{ route('ingrediente.eliminar', ['id' => $user->id, 'idIng' => $ingrediente->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class="boton" type="submit">&nbsp;&nbsp;&nbsp;Soltar&nbsp;&nbsp;&nbsp;</button>
+                        <button class="boton" type="submit">Soltar</button>
                     </form>
-                    <a class="boton">&nbsp;Detalles&nbsp;</a>
+                    <a href="{{ route('ingrediente.show', ['id' => $user->id, 'idIng' => $ingrediente->id] )}}" class="boton">Detalles</a>
                 </div>
             </div>
             @endforeach
