@@ -264,4 +264,24 @@ class MasterController extends Controller
         $caracteristicas->save();
         return redirect()->route("master.index", $id);
     }
+
+    public function fotoDeMaster($id){
+        $master = master::findorFail($id) ; 
+        
+        if (request()->hasFile('imagen')) {
+            // Comprobar si el usuario ya tiene una imagen y borrarla
+            if ($master->imagen) {
+                Storage::disk('public')->delete($master->imagen);
+            }
+            $carpetaMaster = 'imagenes/masters/' . $master->id;
+            // Guardar la nueva imagen
+            $path = request()->file('imagen')->store($carpetaMaster, 'public');
+            
+            $master->update(['imagen' => $path]);
+        }
+
+
+        return redirect()->route("master.index",$id);
+
+    }
 }

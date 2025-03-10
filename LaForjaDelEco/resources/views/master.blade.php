@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatBot Medieval</title>
+    <title>Master</title>
     <link rel="stylesheet" href="{{ asset('css/inventario.css') }}">
     <link
         rel="stylesheet"
@@ -34,6 +34,7 @@
             display: none;
             /* Ocultarlo por defecto */
             font-size: 14px;
+            height: 90%;
         }
 
         #chatbot h5 {
@@ -67,7 +68,7 @@
             margin-top: 20px;
             padding: 10px;
             min-height: 50px;
-            max-height: 200px;
+            height: 550px;
             /* Máxima altura */
             overflow-y: auto;
             /* Habilita el desplazamiento vertical */
@@ -123,12 +124,19 @@
         <div class="izquierda">
             <div class="perfil">
                 @if($master->imagen)
-                <img src="{{ asset('storage/' . $user->imagen) }}" height="250" alt="Imagen del Personaje"><br>
+                <img src="{{ asset('storage/' . $master->imagen) }}" height="250" alt="Imagen del Personaje"><br>
                 @else
                 <img src="{{ asset('Img/9ceb07252b117d785feb84c1c3d589b7-removebg-preview.png') }}" height="250" alt="Imagen por Defecto"><br>
                 @endif
                 <label for="perfil">{{ $master->nombreMaster }}</label>
                 <p>Codigo de Patida: {{$master->codigo}}</p>
+                <form action="{{ route('master.update', ['id' => $master->id]) }}" enctype="multipart/form-data" method="POST">
+                    @csrf
+                    <input type="file" name="imagen" id="imagen">
+                    <button type="submit" class="boton">Cambiar foto</button>
+                </form>
+
+
             </div>
         </div>
         <div class="derecha">
@@ -168,11 +176,11 @@
 
     <!-- Ventana del chatbot -->
     <div id="chatbot">
-        <h5>ChatBot Medieval</h5>
+        <h5>El sabio</h5>
         <div class="form-group">
-            <input type="text" class="form-control" id="userInput" placeholder="Enter your question" />
+            <input type="text" class="form-control" id="userInput" placeholder="El sabio aguarda tu pregunta" />
         </div>
-        <button class="btn btn-success" onclick="sendMessage()">Ask!</button>
+        <button class="btn btn-success" onclick="sendMessage()">Preguntar</button>
         <div id="response"></div>
     </div>
 
@@ -190,16 +198,16 @@
             const input = document.getElementById('userInput').value;
             const responseDiv = document.getElementById('response');
             if (!input) {
-                responseDiv.innerHTML = 'Please enter a message.';
+                responseDiv.innerHTML = 'Haz tu pregunta al sabio.';
                 return;
             }
-            responseDiv.innerHTML = 'Loading...';
+            responseDiv.innerHTML = 'Buscando el bola de cristal...';
             try {
                 const response = await fetch(
                     'https://openrouter.ai/api/v1/chat/completions', {
                         method: 'POST',
                         headers: {
-                            Authorization: 'Bearer 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',
+                            Authorization: 'Bearer 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',
                             'HTTP-Referer': 'https://www.sitename.com',
                             'X-Title': 'SiteName',
                             'Content-Type': 'application/json',

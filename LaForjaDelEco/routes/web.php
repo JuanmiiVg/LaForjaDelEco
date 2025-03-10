@@ -66,6 +66,8 @@ Route::get('/user/{id}/detallePocion/{idPoc}', [inventarioControler::class, 'Det
 Route::get('/user/{id}/detalleMaterial/{idMat}', [inventarioControler::class, 'DetalleMaterial'])->name("material.show");
 Route::get('/user/{id}/detalleIngrediente/{idIng}', [inventarioControler::class, 'DetalleIngrediente'])->name("ingrediente.show");
 
+Route::post('/master/{id}/perfil',[MasterController::class,'fotoDeMaster' ])->name("master.update");
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

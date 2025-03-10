@@ -67,7 +67,18 @@ select#quitar {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
+.display {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
 
+.image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .formulario h2 {
     margin-top: 0;
 }
@@ -88,7 +99,7 @@ select#quitar {
     border-radius: 5px;
 }
 
-.formulario input[type="radio"] {
+.formulario input[type="radio"] { 
     margin-right: 10px;
 }
 
